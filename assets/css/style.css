@@ -1,1 +1,21 @@
-/* styling for app */
+.nav {
+    /* Styling to keep */
+    display: flex;
+    justify-content: space-around;
+
+    /* Styling for testing */
+    /* background-color: blue;
+    color: white; */
+}
+
+.content {
+    /* Styling to keep */
+
+     text-align: center;
+    /* Styling for testing */
+    /* background-color: red; */
+}
+
+/* .question {
+    background-color: blueviolet;
+} */
