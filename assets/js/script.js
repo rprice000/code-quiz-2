@@ -21,6 +21,7 @@ var quizQuestions = [
 // ]
 
 var choicesOne = ['strings','booleans','alerts','numbers']
+var choicesTwo = ['quotes','curly brackets','parenthesis','square brackets']
 
 startQuizbtn.addEventListener("click", function() {
     alert("button clicked");
@@ -35,7 +36,8 @@ function runQuestionOne() {
   // CSS name = container
   var containerDiv = document.createElement('div');
   containerDiv.className = 'container';
-  quizContent.appendChild(containerDiv)
+  containerDiv.id = 'questionContainerOne';
+  quizContent.appendChild(containerDiv);
 
   // Makes the p for Question One
   // CSS name = container
@@ -128,8 +130,40 @@ function runQuestionOne() {
 }
 
 function runQuestionTwo() {
-  quizContent.remove()
-  alert("this worked")
+  // Removes Question One
+  questionContainerOne.remove()
+
+  // Makes the container for Question Two
+  // CSS name = container
+  var containerDiv = document.createElement('div');
+  containerDiv.className = 'container';
+  containerDiv.id = 'questionContainerTwo';
+  quizContent.appendChild(containerDiv);
+
+  // Makes the p for Question Two
+  // CSS name = container
+  var questionTwo = document.createElement('p');
+  questionTwo.textContent = quizQuestions[1];
+  containerDiv.appendChild(questionTwo);
+
+  //Makes the UL for Question Two
+  // CSS name = answerList
+  var answerListTwo = document.createElement('ul');
+  answerListTwo.className = 'answerList'
+
+  // For Loop to make AnswerTwo Choices into Buttons
+  // CSS Class name = itemButton
+  // ID names =  itemChoice0, itemChoice1, itemChoice2, itemChoice3
+  for (var i = 0; i < choicesTwo.length; i++) {
+    var questionTwoButtons = document.createElement('button');
+    questionTwoButtons.className = 'itemButton';
+    questionTwoButtons.id = 'itemChoice'+i;
+    questionTwoButtons.appendChild(document.createTextNode(choicesTwo[i]));
+    answerListTwo.appendChild(questionTwoButtons);
+  }
+
+  // Adds UnorderList to Container Div
+  containerDiv.appendChild(answerListTwo);
 }
 
 
