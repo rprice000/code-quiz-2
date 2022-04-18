@@ -19,3 +19,9 @@
 /* .question {
     background-color: blueviolet;
 } */
+
+
+.answerChoices {
+    list-style: none;
+    text-align: left;
+}

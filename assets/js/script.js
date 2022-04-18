@@ -4,18 +4,55 @@ var openingContent = document.querySelector('#openingContent');
 var quizContent = document.querySelector('#quizContent');
 var startQuizbtn = document.querySelector('#startQuizButton');
 
+var quizQuestions = [
+  '1. Commonly used data types DO Not Include:',
+  '2. The condition in an if/else statement is enclosed with _____.',
+  '3. Arrays in JavaScript can be used to store_____.',
+  '4. String values must be enclosed with _____ when being assigned to variables.',
+  '5. A very useful tool used during development and debugging for printing content to the debugger is:'
+]
+
+var quizAnswerChoices = [
+  choicesOne = ['strings','booleans','alerts','numbers'],
+  choicesTwo = ['quotes','curly brackets','parenthesis','square brackets'],
+  choicesThree = ['numbers and strings','other arrays','booleans','all of the above'],
+  choicesFour = ['commas','curly brackets','quotes','parenthesis'],
+  choicesFive = ['javascript','terminal/bash','for loops','console.log']
+]
 
 
 
 startQuizbtn.addEventListener("click", function() {
     alert("button clicked");
+    // Add timer code here
     openingContent.remove()
-    var question = document.createElement('h1');
-    question.textContent = "hello";
-    quizContent.appendChild(question);
+    runQuestions();
   });
 
 
+function runQuestions() {
+
+  var question = document.createElement('p');
+  question.textContent = quizQuestions[0];
+  quizContent.appendChild(question);
+
+  var answerList = document.createElement('ul');
+  for (var i = 0; i < choicesOne.length; i++) {
+    var item = document.createElement('li');
+    item.appendChild(document.createTextNode(choicesOne[i]));
+    item.className = 'answerChoices';
+    answerList.appendChild(item);
+  }
+  quizContent.appendChild(answerList);
+  
+  
+  
+  
+  // answerList.textContent = choicesOne;
+  // quizContent.appendChild(answerList);
+
+
+}
 
 
 
