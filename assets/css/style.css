@@ -1,27 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.wrapper {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
 .nav {
-    /* Styling to keep */
     display: flex;
     justify-content: space-around;
-
-    /* Styling for testing */
-    /* background-color: blue;
-    color: white; */
 }
 
-.content {
-    /* Styling to keep */
-
+#openingContent {
      text-align: center;
-    /* Styling for testing */
-    /* background-color: red; */
 }
 
-/* .question {
-    background-color: blueviolet;
+
+#quizContent {
+    text-align: center;
+}
+
+/* .answerList {
+    display: flex;
+    justify-content: space-around;
 } */
 
-
-.answerChoices {
-    list-style: none;
-    text-align: left;
+.itemButton {
+    /* display: block; */
+    margin: 30px;
 }
+
+
+

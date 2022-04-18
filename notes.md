@@ -5,12 +5,12 @@ Tr to answer the following code-related questions withing the time limit.  Keep 
 1. Commonly used data types DO Not Include:
     - strings
     - booleans
-    - alerts
+    - alerts  -  answer
     - numbers
 
 2. The condition in an if/else statement is enclosed with _____.
     - quotes
-    - curly brackets
+    - curly brackets  -  answer
     - parenthesis
     - square brackets
 
@@ -18,19 +18,19 @@ Tr to answer the following code-related questions withing the time limit.  Keep 
     - numbers and strings
     - other arrays
     - booleans
-    - all of the above
+    - all of the above  -  answer
 
 4. String values must be enclosed with _____ when being assigned to variables.
     - commas
     - curly brackets
-    - quotes
+    - quotes  -  answer
     - parenthesis
 
 5. A very useful tool used during development and debugging for printing content to the debugger is:
     - javascript
     - terminal/bash
     - for loops
-    - console.log
+    - console.log  -  answer
 
 
 

@@ -12,55 +12,125 @@ var quizQuestions = [
   '5. A very useful tool used during development and debugging for printing content to the debugger is:'
 ]
 
-var quizAnswerChoices = [
-  choicesOne = ['strings','booleans','alerts','numbers'],
-  choicesTwo = ['quotes','curly brackets','parenthesis','square brackets'],
-  choicesThree = ['numbers and strings','other arrays','booleans','all of the above'],
-  choicesFour = ['commas','curly brackets','quotes','parenthesis'],
-  choicesFive = ['javascript','terminal/bash','for loops','console.log']
-]
+// var quizAnswerChoices = [
+//   choicesOne = ['strings','booleans','alerts','numbers'],
+//   choicesTwo = ['quotes','curly brackets','parenthesis','square brackets'],
+//   choicesThree = ['numbers and strings','other arrays','booleans','all of the above'],
+//   choicesFour = ['commas','curly brackets','quotes','parenthesis'],
+//   choicesFive = ['javascript','terminal/bash','for loops','console.log']
+// ]
 
-
+var choicesOne = ['strings','booleans','alerts','numbers']
 
 startQuizbtn.addEventListener("click", function() {
     alert("button clicked");
     // Add timer code here
     openingContent.remove()
-    runQuestions();
+    runQuestionOne();
   });
 
 
-function runQuestions() {
+function runQuestionOne() {
+  // Makes the container for Question One
+  // CSS name = container
+  var containerDiv = document.createElement('div');
+  containerDiv.className = 'container';
+  quizContent.appendChild(containerDiv)
 
-  var question = document.createElement('p');
-  question.textContent = quizQuestions[0];
-  quizContent.appendChild(question);
+  // Makes the p for Question One
+  // CSS name = container
+  var questionOne = document.createElement('p');
+  questionOne.textContent = quizQuestions[0];
+  containerDiv.appendChild(questionOne);
 
-  var answerList = document.createElement('ul');
+  //Makes the UL for Question One
+  // CSS name = answerList
+  var answerListOne = document.createElement('ul');
+  answerListOne.className = 'answerList'
+
+  // For Loop to make AnswerOne Choices into Buttons
+  // CSS Class name = itemButton
+  // ID names =  itemChoice0, itemChoice1, itemChoice2, itemChoice3
   for (var i = 0; i < choicesOne.length; i++) {
-    var item = document.createElement('li');
-    item.appendChild(document.createTextNode(choicesOne[i]));
-    item.className = 'answerChoices';
-    answerList.appendChild(item);
+    var questionOneButtons = document.createElement('button');
+    questionOneButtons.className = 'itemButton';
+    questionOneButtons.id = 'itemChoice'+i;
+    questionOneButtons.appendChild(document.createTextNode(choicesOne[i]));
+    answerListOne.appendChild(questionOneButtons);
   }
-  quizContent.appendChild(answerList);
-  
-  
-  
-  
-  // answerList.textContent = choicesOne;
-  // quizContent.appendChild(answerList);
 
+  // Adds UnorderList to Container Div
+  containerDiv.appendChild(answerListOne);
 
+  // Listener if Correct Choice is made.
+  document.getElementById('itemChoice2').addEventListener('click', function(event) {
+    // Creates line and Correct! Note adds to bottom of List
+    var lineBreak = document.createElement('hr');
+    lineBreak.className = 'lineBreak';
+    containerDiv.appendChild(lineBreak);
+    var correctNote = document.createElement('p');
+    correctNote.textContent = 'Correct!';
+    correctNote.className = 'correctNote';
+    containerDiv.appendChild(correctNote);
+// Store Correct Answer in Storage
+    setTimeout(function(){
+      runQuestionTwo()
+      },5000)
+  })
+
+  // Listener if Correct Choice is made.
+  document.getElementById('itemChoice0').addEventListener('click', function(event) {
+    // Creates line and Correct! Note adds to bottom of List
+    var lineBreak = document.createElement('hr');
+    lineBreak.className = 'lineBreak';
+    containerDiv.appendChild(lineBreak);
+    var incorrectNote = document.createElement('p');
+    incorrectNote.textContent = 'Inorrect!';
+    incorrectNote.className = 'incorrectNote';
+    containerDiv.appendChild(incorrectNote);
+// Store Incorrect Answer in Storage
+    setTimeout(function(){
+      runQuestionTwo()
+      },5000)
+    })
+
+  // Listener if Correct Choice is made.
+  document.getElementById('itemChoice1').addEventListener('click', function(event) {
+    // Creates line and Correct! Note adds to bottom of List
+    var lineBreak = document.createElement('hr');
+    lineBreak.className = 'lineBreak';
+    containerDiv.appendChild(lineBreak);
+    var incorrectNote = document.createElement('p');
+    incorrectNote.textContent = 'Inorrect!';
+    incorrectNote.className = 'incorrectNote';
+    containerDiv.appendChild(incorrectNote);
+// Store Incorrect Answer in Storage
+    setTimeout(function(){
+      runQuestionTwo()
+      },5000)
+    })
+
+  // Listener if Correct Choice is made.
+  document.getElementById('itemChoice3').addEventListener('click', function(event) {
+    // Creates line and Correct! Note adds to bottom of List
+    var lineBreak = document.createElement('hr');
+    lineBreak.className = 'lineBreak';
+    containerDiv.appendChild(lineBreak);
+    var incorrectNote = document.createElement('p');
+    incorrectNote.textContent = 'Inorrect!';
+    incorrectNote.className = 'incorrectNote';
+    containerDiv.appendChild(incorrectNote);
+// Store Incorrect Answer in Storage
+    setTimeout(function(){
+      runQuestionTwo()
+      },5000)
+    })
 }
 
-
-
-
-
-
-
-
+function runQuestionTwo() {
+  quizContent.remove()
+  alert("this worked")
+}
 
 
 
