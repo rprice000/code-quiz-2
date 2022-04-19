@@ -25,7 +25,39 @@ startQuizbtn.addEventListener("click", function() {
     // Add timer code here
     openingContent.remove()
     runQuestionOne();
+    runTimer();
   });
+
+function runTimer() {
+ 
+
+  var countDown = document.createElement('div');
+  countDown.id = 'countDown';
+  countDown.textContent = SOMETHING;
+  timeContainer.appendChild(countDown);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
