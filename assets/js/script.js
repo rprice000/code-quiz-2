@@ -22,22 +22,39 @@ var choicesFive = ['javascript','terminal/bash','for loops','console.log'];
 
 startQuizbtn.addEventListener("click", function() {
     alert("button clicked");
-    // Add timer code here
+    
+    let time = 75;
+    setInterval(runTimer, 1000);
+    
+    function runTimer() {
+      var countDownEl = document.getElementById('countDown');
+      let seconds = time;
+    
+      countDownEl.innerHTML = `${seconds}`;
+      
+      time--;
+      console.log(time);
+    }
+
     openingContent.remove()
     runQuestionOne();
-    runTimer();
+    runTimer()
   });
 
-function runTimer() {
- 
-
-  var countDown = document.createElement('div');
-  countDown.id = 'countDown';
-  countDown.textContent = SOMETHING;
-  timeContainer.appendChild(countDown);
-}
 
 
+
+// function runTimer() {
+//   var countDownEl = document.getElementById('countDown');
+//   let seconds = time;
+
+//   countDownEl.innerHTML = `${seconds}`;
+  
+//   time--;
+//   console.log(time);
+// }
+
+// console.log(time);
 
 
 
