@@ -18,17 +18,19 @@ var choicesThree = ['numbers and strings','other arrays','booleans','all of the 
 var choicesFour = ['commas','curly brackets','quotes','parenthesis'];
 var choicesFive = ['javascript','terminal/bash','for loops','console.log'];
 
-  // Makes the container for All Questions
-  // CSS name = container
-  var questionContainerDiv = document.createElement('div');
-  questionContainerDiv.className = 'container';
-  questionContainerDiv.id = 'questionsContainer';
-  quizContent.appendChild(questionContainerDiv);
+// Makes the container for All Questions
+// CSS name = container
+var questionContainerDiv = document.createElement('div');
+questionContainerDiv.className = 'container';
+questionContainerDiv.id = 'questionsContainer';
+quizContent.appendChild(questionContainerDiv);
+
+let time = 75;
+
 
 startQuizbtn.addEventListener("click", function() {
     alert("button clicked");
     
-    let time = 75;
     setInterval(runTimer, 1000);
 
     function runTimer() {
@@ -41,6 +43,7 @@ startQuizbtn.addEventListener("click", function() {
       console.log(time);
       if (seconds <= 0) {
         endQuiz()
+        // have it stop after one instance
       }
     }
 
@@ -97,8 +100,8 @@ function runQuestionOne() {
     questionOneContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
-      questionOneContainer.remove()
-      runQuestionTwo()
+      questionOneContainer.remove();
+      runQuestionTwo();
       },1000)
   })
 
@@ -114,9 +117,10 @@ function runQuestionOne() {
     questionOneContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionOneContainer.remove()
-      runQuestionTwo()
+      questionOneContainer.remove();
+      runQuestionTwo();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -131,9 +135,10 @@ function runQuestionOne() {
     questionOneContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionOneContainer.remove()
-      runQuestionTwo()
+      questionOneContainer.remove();
+      runQuestionTwo();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -148,9 +153,10 @@ function runQuestionOne() {
     questionOneContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionOneContainer.remove()
-      runQuestionTwo()
+      questionOneContainer.remove();
+      runQuestionTwo();
       },1000)
+      time = time - 5;
     })
 }
 
@@ -204,8 +210,8 @@ function runQuestionTwo() {
     questionTwoContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
-      questionTwoContainer.remove()
-      runQuestionThree()
+      questionTwoContainer.remove();
+      runQuestionThree();
       },1000)
   })
 
@@ -221,9 +227,10 @@ function runQuestionTwo() {
     questionTwoContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionTwoContainer.remove()
-      runQuestionThree()
+      questionTwoContainer.remove();
+      runQuestionThree();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -238,9 +245,10 @@ function runQuestionTwo() {
     questionTwoContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionTwoContainer.remove()
-      runQuestionThree()
+      questionTwoContainer.remove();
+      runQuestionThree();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -255,9 +263,10 @@ function runQuestionTwo() {
     questionTwoContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionTwoContainer.remove()
-      runQuestionThree()
+      questionTwoContainer.remove();
+      runQuestionThree();
       },1000)
+      time = time - 5;
     })
 }
 
@@ -311,8 +320,8 @@ function runQuestionThree() {
     questionThreeContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
-      questionThreeContainer.remove()
-      runQuestionFour()
+      questionThreeContainer.remove();
+      runQuestionFour();
       },1000)
   })
 
@@ -328,9 +337,10 @@ function runQuestionThree() {
     questionThreeContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionThreeContainer.remove()
-      runQuestionFour()
+      questionThreeContainer.remove();
+      runQuestionFour();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -345,9 +355,10 @@ function runQuestionThree() {
     questionThreeContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionThreeContainer.remove()
-      runQuestionFour()
+      questionThreeContainer.remove();
+      runQuestionFour();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -362,9 +373,10 @@ function runQuestionThree() {
     questionThreeContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionThreeContainer.remove()
-      runQuestionFour()
+      questionThreeContainer.remove();
+      runQuestionFour();
       },1000)
+      time = time - 5;
     })
 
 }
@@ -419,8 +431,8 @@ function runQuestionFour() {
     questionFourContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
-      questionFourContainer.remove()
-      runQuestionFive()
+      questionFourContainer.remove();
+      runQuestionFive();
       },1000)
   })
 
@@ -436,9 +448,10 @@ function runQuestionFour() {
     questionFourContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionFourContainer.remove()
-      runQuestionFive()
+      questionFourContainer.remove();
+      runQuestionFive();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -453,9 +466,10 @@ function runQuestionFour() {
     questionFourContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionFourContainer.remove()
-      runQuestionFive()
+      questionFourContainer.remove();
+      runQuestionFive();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -470,9 +484,10 @@ function runQuestionFour() {
     questionFourContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionFourContainer.remove()
-      runQuestionFive()
+      questionFourContainer.remove();
+      runQuestionFive();
       },1000)
+      time = time - 5;
     })
 }
 
@@ -527,8 +542,8 @@ function runQuestionFive() {
     questionFiveContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
-      questionFiveContainer.remove()
-      endQuiz()
+      questionFiveContainer.remove();
+      endQuiz();
       },1000)
   })
 
@@ -544,9 +559,10 @@ function runQuestionFive() {
     questionFiveContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionFiveContainer.remove()
-      endQuiz()
+      questionFiveContainer.remove();
+      endQuiz();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -561,9 +577,10 @@ function runQuestionFive() {
     questionFiveContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionFiveContainer.remove()
-      endQuiz()
+      questionFiveContainer.remove();
+      endQuiz();
       },1000)
+      time = time - 5;
     })
 
   // Listener if Incorrect Choice is made.
@@ -578,9 +595,10 @@ function runQuestionFive() {
     questionFiveContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
-      questionFiveContainer.remove()
-      endQuiz()
+      questionFiveContainer.remove();
+      endQuiz();
       },1000)
+      time = time - 5;
     })
 }
 
