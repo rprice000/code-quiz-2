@@ -18,14 +18,19 @@ var choicesThree = ['numbers and strings','other arrays','booleans','all of the 
 var choicesFour = ['commas','curly brackets','quotes','parenthesis'];
 var choicesFive = ['javascript','terminal/bash','for loops','console.log'];
 
-
+  // Makes the container for All Questions
+  // CSS name = container
+  var questionContainerDiv = document.createElement('div');
+  questionContainerDiv.className = 'container';
+  questionContainerDiv.id = 'questionsContainer';
+  quizContent.appendChild(questionContainerDiv);
 
 startQuizbtn.addEventListener("click", function() {
     alert("button clicked");
     
     let time = 75;
     setInterval(runTimer, 1000);
-    
+
     function runTimer() {
       var countDownEl = document.getElementById('countDown');
       let seconds = time;
@@ -34,6 +39,9 @@ startQuizbtn.addEventListener("click", function() {
       
       time--;
       console.log(time);
+      if (seconds <= 0) {
+        endQuiz()
+      }
     }
 
     openingContent.remove()
@@ -43,56 +51,20 @@ startQuizbtn.addEventListener("click", function() {
 
 
 
-
-// function runTimer() {
-//   var countDownEl = document.getElementById('countDown');
-//   let seconds = time;
-
-//   countDownEl.innerHTML = `${seconds}`;
-  
-//   time--;
-//   console.log(time);
-// }
-
-// console.log(time);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /////////////////////////////////////////////////////////////////////////////// QUESTION ONE FUNCTION
 function runQuestionOne() {
+
   // Makes the container for Question One
-  // CSS name = container
-  var containerDiv = document.createElement('div');
-  containerDiv.className = 'container';
-  containerDiv.id = 'questionContainerOne';
-  quizContent.appendChild(containerDiv);
+  // CSS id = questionOneContainer
+  var questionOneContainer = document.createElement('div');
+  questionOneContainer.id = 'questionOneContainer';
+  questionContainerDiv.appendChild(questionOneContainer);
 
   // Makes the p for Question One
   // CSS name = container
-  var questionOne = document.createElement('p');
-  questionOne.textContent = quizQuestions[0];
-  containerDiv.appendChild(questionOne);
+  var questionOneContent = document.createElement('p');
+  questionOneContent.textContent = quizQuestions[0];
+  questionOneContainer.appendChild(questionOneContent);
 
   //Makes the UL for Question One
   // CSS name = answerList
@@ -111,20 +83,21 @@ function runQuestionOne() {
   }
 
   // Adds UnorderList to Container Div
-  containerDiv.appendChild(answerListOne);
+  questionOneContent.appendChild(answerListOne);
 
   // Listener if Correct Choice is made.
   document.getElementById('itemChoice2').addEventListener('click', function(event) {
     // Creates line and Correct! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionOneContent.appendChild(lineBreak);
     var correctNote = document.createElement('p');
     correctNote.textContent = 'Correct!';
     correctNote.className = 'correctNote';
-    containerDiv.appendChild(correctNote);
+    questionOneContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
+      questionOneContainer.remove()
       runQuestionTwo()
       },1000)
   })
@@ -134,13 +107,14 @@ function runQuestionOne() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionOneContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionOneContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionOneContainer.remove()
       runQuestionTwo()
       },1000)
     })
@@ -150,13 +124,14 @@ function runQuestionOne() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionOneContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionOneContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionOneContainer.remove()
       runQuestionTwo()
       },1000)
     })
@@ -166,13 +141,14 @@ function runQuestionOne() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionOneContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionOneContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionOneContainer.remove()
       runQuestionTwo()
       },1000)
     })
@@ -182,21 +158,20 @@ function runQuestionOne() {
 
 //////////////////////////////////////////////////////////////////////////////// QUESTION TWO FUNCTION
 function runQuestionTwo() {
-  // Removes Question One
-  questionContainerOne.remove()
+
 
   // Makes the container for Question Two
   // CSS name = container
-  var containerDiv = document.createElement('div');
-  containerDiv.className = 'container';
-  containerDiv.id = 'questionContainerTwo';
-  quizContent.appendChild(containerDiv);
+  var questionTwoContainer = document.createElement('div');
+  questionTwoContainer.className = 'container';
+  questionTwoContainer.id = 'questionContainerTwo';
+  questionContainerDiv.appendChild(questionTwoContainer);
 
   // Makes the p for Question Two
   // CSS name = container
-  var questionTwo = document.createElement('p');
-  questionTwo.textContent = quizQuestions[1];
-  containerDiv.appendChild(questionTwo);
+  var questionTwoContent = document.createElement('p');
+  questionTwoContent.textContent = quizQuestions[1];
+  questionTwoContainer.appendChild(questionTwoContent);
 
   //Makes the UL for Question Two
   // CSS name = answerList
@@ -215,20 +190,21 @@ function runQuestionTwo() {
   }
 
   // Adds UnorderList to Container Div
-  containerDiv.appendChild(answerListTwo);
+  questionTwoContent.appendChild(answerListTwo);
 
   // Listener if Correct Choice is made.
   document.getElementById('itemChoice1').addEventListener('click', function(event) {
     // Creates line and Correct! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionTwoContent.appendChild(lineBreak);
     var correctNote = document.createElement('p');
     correctNote.textContent = 'Correct!';
     correctNote.className = 'correctNote';
-    containerDiv.appendChild(correctNote);
+    questionTwoContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
+      questionTwoContainer.remove()
       runQuestionThree()
       },1000)
   })
@@ -238,13 +214,14 @@ function runQuestionTwo() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionTwoContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionTwoContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionTwoContainer.remove()
       runQuestionThree()
       },1000)
     })
@@ -254,13 +231,14 @@ function runQuestionTwo() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionTwoContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionTwoContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionTwoContainer.remove()
       runQuestionThree()
       },1000)
     })
@@ -270,13 +248,14 @@ function runQuestionTwo() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionTwoContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionTwoContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionTwoContainer.remove()
       runQuestionThree()
       },1000)
     })
@@ -287,104 +266,106 @@ function runQuestionTwo() {
 ///////////////////////////////////////////////////////////////////////// QUESTION THREE FRUNCTION
 function runQuestionThree() {
 
- // Removes Question Two
- questionContainerTwo.remove()
 
- // Makes the container for Question Three
- // CSS name = container
- var containerDiv = document.createElement('div');
- containerDiv.className = 'container';
- containerDiv.id = 'questionContainerThree';
- quizContent.appendChild(containerDiv);
+   // Makes the container for Question Three
+  // CSS name = container
+  var questionThreeContainer = document.createElement('div');
+  questionThreeContainer.className = 'container';
+  questionThreeContainer.id = 'questionContainerThree';
+  questionContainerDiv.appendChild(questionThreeContainer);
 
- // Makes the p for Question Three
- // CSS name = container
- var questionThree = document.createElement('p');
- questionThree.textContent = quizQuestions[2];
- containerDiv.appendChild(questionThree);
+  // Makes the p for Question Three
+  // CSS name = container
+  var questionThreeContent = document.createElement('p');
+  questionThreeContent.textContent = quizQuestions[2];
+  questionThreeContainer.appendChild(questionThreeContent);
 
- //Makes the UL for Question Three
- // CSS name = answerList
- var answerListThree = document.createElement('ul');
- answerListThree.className = 'answerList'
+  //Makes the UL for Question Three
+  // CSS name = answerList
+  var answerListThree = document.createElement('ul');
+  answerListThree.className = 'answerList'
 
- // For Loop to make AnswerThree Choices into Buttons
- // CSS Class name = itemButton
- // ID names =  itemChoice0, itemChoice1, itemChoice2, itemChoice3
- for (var i = 0; i < choicesThree.length; i++) {
-   var questionThreeButtons = document.createElement('button');
-   questionThreeButtons.className = 'itemButton';
-   questionThreeButtons.id = 'itemChoice'+i;
-   questionThreeButtons.appendChild(document.createTextNode(choicesThree[i]));
-   answerListThree.appendChild(questionThreeButtons);
- }
+  // For Loop to make AnswerTwo Choices into Buttons
+  // CSS Class name = itemButton
+  // ID names =  itemChoice0, itemChoice1, itemChoice2, itemChoice3
+  for (var i = 0; i < choicesThree.length; i++) {
+    var questionThreeButtons = document.createElement('button');
+    questionThreeButtons.className = 'itemButton';
+    questionThreeButtons.id = 'itemChoice'+i;
+    questionThreeButtons.appendChild(document.createTextNode(choicesThree[i]));
+    answerListThree.appendChild(questionThreeButtons);
+  }
 
- // Adds UnorderList to Container Div
- containerDiv.appendChild(answerListThree);
+  // Adds UnorderList to Container Div
+  questionThreeContent.appendChild(answerListThree);
 
- // Listener if Correct Choice is made.
- document.getElementById('itemChoice3').addEventListener('click', function(event) {
-   // Creates line and Correct! Note adds to bottom of List
-   var lineBreak = document.createElement('hr');
-   lineBreak.className = 'lineBreak';
-   containerDiv.appendChild(lineBreak);
-   var correctNote = document.createElement('p');
-   correctNote.textContent = 'Correct!';
-   correctNote.className = 'correctNote';
-   containerDiv.appendChild(correctNote);
+  // Listener if Correct Choice is made.
+  document.getElementById('itemChoice3').addEventListener('click', function(event) {
+    // Creates line and Correct! Note adds to bottom of List
+    var lineBreak = document.createElement('hr');
+    lineBreak.className = 'lineBreak';
+    questionThreeContent.appendChild(lineBreak);
+    var correctNote = document.createElement('p');
+    correctNote.textContent = 'Correct!';
+    correctNote.className = 'correctNote';
+    questionThreeContent.appendChild(correctNote);
 // Store Correct Answer in Storage
-   setTimeout(function(){
-     runQuestionFour()
-     },1000)
- })
+    setTimeout(function(){
+      questionThreeContainer.remove()
+      runQuestionFour()
+      },1000)
+  })
 
- // Listener if Incorrect Choice is made.
- document.getElementById('itemChoice0').addEventListener('click', function(event) {
-   // Creates line and Incorrect! Note adds to bottom of List
-   var lineBreak = document.createElement('hr');
-   lineBreak.className = 'lineBreak';
-   containerDiv.appendChild(lineBreak);
-   var incorrectNote = document.createElement('p');
-   incorrectNote.textContent = 'Inorrect!';
-   incorrectNote.className = 'incorrectNote';
-   containerDiv.appendChild(incorrectNote);
+  // Listener if Incorrect Choice is made.
+  document.getElementById('itemChoice0').addEventListener('click', function(event) {
+    // Creates line and Incorrect! Note adds to bottom of List
+    var lineBreak = document.createElement('hr');
+    lineBreak.className = 'lineBreak';
+    questionThreeContent.appendChild(lineBreak);
+    var incorrectNote = document.createElement('p');
+    incorrectNote.textContent = 'Inorrect!';
+    incorrectNote.className = 'incorrectNote';
+    questionThreeContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
-   setTimeout(function(){
-     runQuestionFour()
-     },1000)
-   })
+    setTimeout(function(){
+      questionThreeContainer.remove()
+      runQuestionFour()
+      },1000)
+    })
 
- // Listener if Incorrect Choice is made.
- document.getElementById('itemChoice1').addEventListener('click', function(event) {
-   // Creates line and Incorrect! Note adds to bottom of List
-   var lineBreak = document.createElement('hr');
-   lineBreak.className = 'lineBreak';
-   containerDiv.appendChild(lineBreak);
-   var incorrectNote = document.createElement('p');
-   incorrectNote.textContent = 'Inorrect!';
-   incorrectNote.className = 'incorrectNote';
-   containerDiv.appendChild(incorrectNote);
+  // Listener if Incorrect Choice is made.
+  document.getElementById('itemChoice1').addEventListener('click', function(event) {
+    // Creates line and Incorrect! Note adds to bottom of List
+    var lineBreak = document.createElement('hr');
+    lineBreak.className = 'lineBreak';
+    questionThreeContent.appendChild(lineBreak);
+    var incorrectNote = document.createElement('p');
+    incorrectNote.textContent = 'Inorrect!';
+    incorrectNote.className = 'incorrectNote';
+    questionThreeContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
-   setTimeout(function(){
-     runQuestionFour()
-     },1000)
-   })
+    setTimeout(function(){
+      questionThreeContainer.remove()
+      runQuestionFour()
+      },1000)
+    })
 
- // Listener if Incorrect Choice is made.
- document.getElementById('itemChoice2').addEventListener('click', function(event) {
-   // Creates line and Incorrect! Note adds to bottom of List
-   var lineBreak = document.createElement('hr');
-   lineBreak.className = 'lineBreak';
-   containerDiv.appendChild(lineBreak);
-   var incorrectNote = document.createElement('p');
-   incorrectNote.textContent = 'Inorrect!';
-   incorrectNote.className = 'incorrectNote';
-   containerDiv.appendChild(incorrectNote);
+  // Listener if Incorrect Choice is made.
+  document.getElementById('itemChoice2').addEventListener('click', function(event) {
+    // Creates line and Incorrect! Note adds to bottom of List
+    var lineBreak = document.createElement('hr');
+    lineBreak.className = 'lineBreak';
+    questionThreeContent.appendChild(lineBreak);
+    var incorrectNote = document.createElement('p');
+    incorrectNote.textContent = 'Inorrect!';
+    incorrectNote.className = 'incorrectNote';
+    questionThreeContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
-   setTimeout(function(){
-     runQuestionFour()
-     },1000)
-   })
+    setTimeout(function(){
+      questionThreeContainer.remove()
+      runQuestionFour()
+      },1000)
+    })
 
 }
 
@@ -392,28 +373,27 @@ function runQuestionThree() {
 
 /////////////////////////////////////////////////////////////////////////// QUESTION FOUR FUNCTION
 function runQuestionFour() {
-  // Removes Question Three
-  questionContainerThree.remove()
+
 
   // Makes the container for Question Four
   // CSS name = container
-  var containerDiv = document.createElement('div');
-  containerDiv.className = 'container';
-  containerDiv.id = 'questionContainerFour';
-  quizContent.appendChild(containerDiv);
+  var questionFourContainer = document.createElement('div');
+  questionFourContainer.className = 'container';
+  questionFourContainer.id = 'questionContainerFour';
+  questionContainerDiv.appendChild(questionFourContainer);
 
   // Makes the p for Question Four
   // CSS name = container
-  var questionFour = document.createElement('p');
-  questionFour.textContent = quizQuestions[3];
-  containerDiv.appendChild(questionFour);
+  var questionFourContent = document.createElement('p');
+  questionFourContent.textContent = quizQuestions[3];
+  questionFourContainer.appendChild(questionFourContent);
 
   //Makes the UL for Question Four
   // CSS name = answerList
   var answerListFour = document.createElement('ul');
   answerListFour.className = 'answerList'
 
-  // For Loop to make AnswerFour Choices into Buttons
+  // For Loop to make AnswerTwo Choices into Buttons
   // CSS Class name = itemButton
   // ID names =  itemChoice0, itemChoice1, itemChoice2, itemChoice3
   for (var i = 0; i < choicesFour.length; i++) {
@@ -425,20 +405,21 @@ function runQuestionFour() {
   }
 
   // Adds UnorderList to Container Div
-  containerDiv.appendChild(answerListFour);
+  questionFourContent.appendChild(answerListFour);
 
   // Listener if Correct Choice is made.
   document.getElementById('itemChoice2').addEventListener('click', function(event) {
     // Creates line and Correct! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionFourContent.appendChild(lineBreak);
     var correctNote = document.createElement('p');
     correctNote.textContent = 'Correct!';
     correctNote.className = 'correctNote';
-    containerDiv.appendChild(correctNote);
+    questionFourContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
+      questionFourContainer.remove()
       runQuestionFive()
       },1000)
   })
@@ -448,13 +429,14 @@ function runQuestionFour() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionFourContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionFourContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionFourContainer.remove()
       runQuestionFive()
       },1000)
     })
@@ -464,13 +446,14 @@ function runQuestionFour() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionFourContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionFourContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionFourContainer.remove()
       runQuestionFive()
       },1000)
     })
@@ -480,13 +463,14 @@ function runQuestionFour() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionFourContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionFourContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionFourContainer.remove()
       runQuestionFive()
       },1000)
     })
@@ -497,28 +481,27 @@ function runQuestionFour() {
 
 //////////////////////////////////////////////////////////////////////////////// QUESTION FIVE FUNCTION
 function runQuestionFive() {
-  // Removes Question Four
-  questionContainerFour.remove()
+
 
   // Makes the container for Question Five
   // CSS name = container
-  var containerDiv = document.createElement('div');
-  containerDiv.className = 'container';
-  containerDiv.id = 'questionContainerFive';
-  quizContent.appendChild(containerDiv);
+  var questionFiveContainer = document.createElement('div');
+  questionFiveContainer.className = 'container';
+  questionFiveContainer.id = 'questionContainerFive';
+  questionContainerDiv.appendChild(questionFiveContainer);
 
   // Makes the p for Question Five
   // CSS name = container
-  var questionFive = document.createElement('p');
-  questionFive.textContent = quizQuestions[4];
-  containerDiv.appendChild(questionFive);
+  var questionFiveContent = document.createElement('p');
+  questionFiveContent.textContent = quizQuestions[4];
+  questionFiveContainer.appendChild(questionFiveContent);
 
   //Makes the UL for Question Five
   // CSS name = answerList
   var answerListFive = document.createElement('ul');
   answerListFive.className = 'answerList'
 
-  // For Loop to make AnswerFive Choices into Buttons
+  // For Loop to make AnswerTwo Choices into Buttons
   // CSS Class name = itemButton
   // ID names =  itemChoice0, itemChoice1, itemChoice2, itemChoice3
   for (var i = 0; i < choicesFive.length; i++) {
@@ -530,20 +513,21 @@ function runQuestionFive() {
   }
 
   // Adds UnorderList to Container Div
-  containerDiv.appendChild(answerListFive);
+  questionFiveContent.appendChild(answerListFive);
 
   // Listener if Correct Choice is made.
   document.getElementById('itemChoice3').addEventListener('click', function(event) {
     // Creates line and Correct! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionFiveContent.appendChild(lineBreak);
     var correctNote = document.createElement('p');
     correctNote.textContent = 'Correct!';
     correctNote.className = 'correctNote';
-    containerDiv.appendChild(correctNote);
+    questionFiveContent.appendChild(correctNote);
 // Store Correct Answer in Storage
     setTimeout(function(){
+      questionFiveContainer.remove()
       endQuiz()
       },1000)
   })
@@ -553,13 +537,14 @@ function runQuestionFive() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionFiveContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionFiveContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionFiveContainer.remove()
       endQuiz()
       },1000)
     })
@@ -569,13 +554,14 @@ function runQuestionFive() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionFiveContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionFiveContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionFiveContainer.remove()
       endQuiz()
       },1000)
     })
@@ -585,13 +571,14 @@ function runQuestionFive() {
     // Creates line and Incorrect! Note adds to bottom of List
     var lineBreak = document.createElement('hr');
     lineBreak.className = 'lineBreak';
-    containerDiv.appendChild(lineBreak);
+    questionFiveContent.appendChild(lineBreak);
     var incorrectNote = document.createElement('p');
     incorrectNote.textContent = 'Inorrect!';
     incorrectNote.className = 'incorrectNote';
-    containerDiv.appendChild(incorrectNote);
+    questionFiveContent.appendChild(incorrectNote);
 // Store Incorrect Answer in Storage
     setTimeout(function(){
+      questionFiveContainer.remove()
       endQuiz()
       },1000)
     })
@@ -599,8 +586,7 @@ function runQuestionFive() {
 
 ///////////////////////////////////////////////////////////////////////////////// END QUIZ FUNCTION
 function endQuiz() {
-  // Removes Question Five
-  questionContainerFive.remove()
+
 
   // Makes the container for End Quiz
   // CSS name = container
