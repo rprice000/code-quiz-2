@@ -31,7 +31,7 @@ let time = 75;
 startQuizbtn.addEventListener("click", function() {
     alert("button clicked");
     
-    setInterval(runTimer, 1000);
+    var timeLeft = setInterval(runTimer, 1000);
 
     function runTimer() {
       var countDownEl = document.getElementById('countDown');
@@ -40,18 +40,20 @@ startQuizbtn.addEventListener("click", function() {
       countDownEl.innerHTML = `${seconds}`;
       
       time--;
-      console.log(time);
-      if (seconds <= 0) {
-        endQuiz()
-        // have it stop after one instance
+  
+      if (time <= 0) {
+        clearInterval(timeLeft);
+        countDownEl.innerHTML = 0;
+        questionContainerDiv.remove()
+        return endQuiz();
       }
+
     }
 
     openingContent.remove()
     runQuestionOne();
     runTimer()
   });
-
 
 
 /////////////////////////////////////////////////////////////////////////////// QUESTION ONE FUNCTION
@@ -604,7 +606,7 @@ function runQuestionFive() {
 
 ///////////////////////////////////////////////////////////////////////////////// END QUIZ FUNCTION
 function endQuiz() {
-
+  questionContainerDiv.remove()
 
   // Makes the container for End Quiz
   // CSS name = container
@@ -620,10 +622,3 @@ function endQuiz() {
   containerDiv.appendChild(endQuizStatement);
 
 }
-
-
-// When user clicks Start Quiz
-// Then main content is removed
-// The timer starts counting down
-// The first question is displayed
-//
