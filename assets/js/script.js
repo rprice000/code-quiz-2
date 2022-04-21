@@ -1157,6 +1157,15 @@ startQuizbtn.addEventListener("click", function() {
 
 ///////////////////////////////////////////////////////////////////////////////// END QUIZ FUNCTION
 
+ // Make button for Submit Initials
+  // CSS name = submitScorebtn
+  
+  var submitScorebtn = document.createElement('input');
+  submitScorebtn.id = 'submitScorebtn';
+  submitScorebtn.setAttribute('type', 'submit');
+  var inputSubmitInitials = document.createElement('input');
+  inputSubmitInitials.id = 'inputSubmitInitials';
+  inputSubmitInitials.type = 'text';
 
 function endQuiz() {
   questionContainerDiv.remove()
@@ -1197,16 +1206,44 @@ function endQuiz() {
 
   // Make input for Submit Initials
   // CSS name = inputSubmitInitials
-  var inputSubmitInitials = document.createElement('input');
-  inputSubmitInitials.id = 'inputSubmitInitials';
-  inputSubmitInitials.type = 'text';
+  // var inputSubmitInitials = document.createElement('input');
+  // inputSubmitInitials.id = 'inputSubmitInitials';
+  // inputSubmitInitials.type = 'text';
   submitInitialsContainer.appendChild(inputSubmitInitials);
 
   // Make button for Submit Initials
   // CSS name = submitScorebtn
-  var submitScorebtn = document.createElement('input');
-  submitScorebtn.id = 'submitScorebtn';
-  submitScorebtn.setAttribute('type', 'submit');
+  // var submitScorebtn = document.createElement('input');
+  // submitScorebtn.id = 'submitScorebtn';
+  // submitScorebtn.setAttribute('type', 'submit');
   submitInitialsContainer.appendChild(submitScorebtn);
 
+  // Event Listener for Submitting Initials and Score
+  submitScorebtn.addEventListener("click", function() {
+    alert("You got me");
+    containerDiv.remove()
+    displayHighScores()
+  });
 }
+
+function displayHighScores() {
+ // Makes the container for High Score List
+// CSS name = container
+  var highScoresContainerDiv = document.createElement('div');
+  highScoresContainerDiv.className = 'container';
+  highScoresContainerDiv.id = 'highScoresContainerDiv';
+  quizContent.appendChild(highScoresContainerDiv);
+
+  // Makes the p for High Scores Statement
+  // CSS name = highScoresStatement
+  var highScoresStatement = document.createElement('p');
+  highScoresStatement.id = 'endQuizStatement';
+  highScoresStatement.textContent = 'High Scores';
+  highScoresContainerDiv.appendChild(highScoresStatement);
+
+
+
+
+
+  // var initialsScorePair = inputSubmitInitials + '-' + timeScore;
+};
