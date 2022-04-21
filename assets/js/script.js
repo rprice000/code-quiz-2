@@ -618,6 +618,7 @@ startQuizbtn.addEventListener("click", function() {
   inputSubmitInitials.type = 'text';
  
   var highScoresArray = [];
+  var currentUserData = [];
 
 function endQuiz() {
   questionContainerDiv.remove()
@@ -675,10 +676,10 @@ function endQuiz() {
     alert("You got me");
     var initialsValue = document.getElementById('inputSubmitInitials').value;
     console.log(initialsValue)
-    var initialsScoreCombo = initialsValue + '-' + timeScore;
+    var initialsScoreCombo = initialsValue + ' - ' + timeScore;
     console.log(initialsScoreCombo)
-    highScoresArray.push(initialsScoreCombo)
-    console.log(highScoresArray)
+    currentUserData.push(initialsScoreCombo)
+    console.log(currentUserData)
     containerDiv.remove()
     displayHighScores()
   });
@@ -690,36 +691,44 @@ function endQuiz() {
 function displayHighScores() {
  // Makes the container for High Score List
 // CSS name = container
-  var highScoresContainerDiv = document.createElement('div');
-  highScoresContainerDiv.className = 'container';
-  highScoresContainerDiv.id = 'highScoresContainerDiv';
-  quizContent.appendChild(highScoresContainerDiv);
+  var finalScoresContainerDiv = document.createElement('div');
+  finalScoresContainerDiv.className = 'container';
+  finalScoresContainerDiv.id = 'finalScoresContainerDiv';
+  quizContent.appendChild(finalScoresContainerDiv);
 
   // Makes the p for High Scores Statement
   // CSS name = highScoresStatement
   var highScoresStatement = document.createElement('p');
   highScoresStatement.id = 'endQuizStatement';
   highScoresStatement.textContent = 'High Scores';
-  highScoresContainerDiv.appendChild(highScoresStatement);
+  finalScoresContainerDiv.appendChild(highScoresStatement);
 
-  // Makes the ul for All High Scores
-  // CSS name = highScoresList
-  var highScoresList = document.createElement('ul');
-  highScoresList.className = 'highScoresList'
-
-  for (var i = 0; i < highScoresArray.length; i++) {
-    var highScoreListItem = document.createElement('li');
-    highScoreListItem.className = 'highScoreListItem';
-    highScoreListItem.id = 'highScoreListItem'+i;
-    highScoreListItem.appendChild(document.createTextNode(highScoresArray[i]));
-    highScoresList.appendChild(highScoreListItem);
-  }
-
-
-  // Appends unorderd High Score List to High Score Container
-  highScoresContainerDiv.appendChild(highScoresList);
-
-
-
+  // Makes the p for displaying Current User initials and Score
+  // CSS name = userInitilScore
+  var userInitilScore = document.createElement('p');
+  userInitilScore.className = 'userInitilScore';
+  userInitilScore.id = 'userInitilScore';
+  userInitilScore.appendChild(document.createTextNode(currentUserData));
+  finalScoresContainerDiv.appendChild(userInitilScore);
+  
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+// for (var i = 0; i < highScoresArray.length; i++) {
+//   var highScoreListItem = document.createElement('li');
+//   highScoreListItem.className = 'highScoreListItem';
+//   highScoreListItem.id = 'highScoreListItem'+i;
+//   highScoreListItem.appendChild(document.createTextNode(highScoresArray[i]));
+//   highScoresList.appendChild(highScoreListItem);
+// }
