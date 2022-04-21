@@ -689,14 +689,14 @@ function endQuiz() {
 
 ///////////////////////////////////////////////////////////////////////////////// HIGH SCORES FUNCTION
 function displayHighScores() {
- // Makes the container for High Score List
-// CSS name = container
+  // Makes the container for Final Score
+  // CSS name = container
   var finalScoresContainerDiv = document.createElement('div');
   finalScoresContainerDiv.className = 'container';
   finalScoresContainerDiv.id = 'finalScoresContainerDiv';
   quizContent.appendChild(finalScoresContainerDiv);
 
-  // Makes the p for High Scores Statement
+  // Makes the p for Final Score Statement
   // CSS name = highScoresStatement
   var highScoresStatement = document.createElement('p');
   highScoresStatement.id = 'endQuizStatement';
@@ -710,7 +710,36 @@ function displayHighScores() {
   userInitilScore.id = 'userInitilScore';
   userInitilScore.appendChild(document.createTextNode(currentUserData));
   finalScoresContainerDiv.appendChild(userInitilScore);
+
+
+  // Makes the container for Final Score Buttons
+  // CSS name = container
+  var finalScoresBtnContainer = document.createElement('div');
+  finalScoresBtnContainer.className = 'container';
+  finalScoresBtnContainer.id = 'finalScoresBtnContainer';
+  quizContent.appendChild(finalScoresBtnContainer);
+
+  // Makes Two Buttons
+  // CSS Class names = finalButton
+  // CSS ID names = goBackBtn / clearHighScoresBtn
+  var goBackBtn = document.createElement('button');
+  goBackBtn.className = 'finalButton';
+  goBackBtn.id = 'goBackBtn';
+  goBackBtn.textContent = 'Go Back';
+  finalScoresBtnContainer.appendChild(goBackBtn);
+
+  var clearHighScoresBtn = document.createElement('button');
+  clearHighScoresBtn.className = 'finalButton';
+  clearHighScoresBtn.id = 'clearHighScoresBtn';
+  clearHighScoresBtn.textContent = 'Clear High Scores';
+  finalScoresBtnContainer.appendChild(clearHighScoresBtn);
   
+  // Event Listener for Clearing All Scores
+  clearHighScoresBtn.addEventListener("click", function() {
+    alert("Cleared All Scores");
+   
+    
+  });
 
 };
 
