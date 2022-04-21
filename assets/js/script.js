@@ -1179,9 +1179,34 @@ function endQuiz() {
   // CSS name = endQuizStatement
   var finalScore = document.createElement('p');
   finalScore.id = 'finalScore';
-  finalScore.textContent = 'Your final time score is '+timeScore;
+  finalScore.textContent = 'Your final time score is: '+timeScore;
   containerDiv.appendChild(finalScore);
 
-  
+  // Makes the container for Submit Initials
+  // CSS name = endQuizStatement
+  var submitInitialsContainer = document.createElement('div');
+  submitInitialsContainer.id = 'submitInitialsContainer';
+  containerDiv.appendChild(submitInitialsContainer);
+
+  // Makes the p for Submit Initials
+  // CSS name = pSubmitInitials
+  var pSubmitInitials = document.createElement('p');
+  pSubmitInitials.id = 'pSubmitInitials';
+  pSubmitInitials.textContent = 'Enter Initials';
+  submitInitialsContainer.appendChild(pSubmitInitials);
+
+  // Make input for Submit Initials
+  // CSS name = inputSubmitInitials
+  var inputSubmitInitials = document.createElement('input');
+  inputSubmitInitials.id = 'inputSubmitInitials';
+  inputSubmitInitials.type = 'text';
+  submitInitialsContainer.appendChild(inputSubmitInitials);
+
+  // Make button for Submit Initials
+  // CSS name = submitScorebtn
+  var submitScorebtn = document.createElement('input');
+  submitScorebtn.id = 'submitScorebtn';
+  submitScorebtn.setAttribute('type', 'submit');
+  submitInitialsContainer.appendChild(submitScorebtn);
 
 }
