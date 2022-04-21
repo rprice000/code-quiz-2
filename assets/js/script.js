@@ -26,15 +26,15 @@ questionContainerDiv.id = 'questionsContainer';
 quizContent.appendChild(questionContainerDiv);
 
 let time = 75;
-
+var timeScore;
 
 startQuizbtn.addEventListener("click", function() {
     alert("button clicked");
     
     var timeLeft = setInterval(runTimer, 1000);
-
+    var countDownEl = document.getElementById('countDown');
     function runTimer() {
-      var countDownEl = document.getElementById('countDown');
+      // var countDownEl = document.getElementById('countDown');
       let seconds = time;
     
       countDownEl.innerHTML = `${seconds}`;
@@ -44,7 +44,9 @@ startQuizbtn.addEventListener("click", function() {
       if (time <= 0) {
         clearInterval(timeLeft);
         countDownEl.innerHTML = 0;
-        questionContainerDiv.remove()
+        timeScore = 0;
+        console.log(timeScore);
+        questionContainerDiv.remove();
         return endQuiz();
       }
 
@@ -525,6 +527,8 @@ startQuizbtn.addEventListener("click", function() {
         questionFiveContainer.remove();
         clearInterval(timeLeft);
         countDownEl.remove()
+        timeScore = time;
+        console.log(timeScore);
         endQuiz();
         },1000)
     })
@@ -544,6 +548,7 @@ startQuizbtn.addEventListener("click", function() {
         questionFiveContainer.remove();
         clearInterval(timeLeft);
         countDownEl.remove()
+        timeScore = time;
         endQuiz();
         },1000)
         time = time - 5;
@@ -564,6 +569,7 @@ startQuizbtn.addEventListener("click", function() {
         questionFiveContainer.remove();
         clearInterval(timeLeft);
         countDownEl.remove()
+        timeScore = time;
         endQuiz();
         },1000)
         time = time - 5;
@@ -584,6 +590,7 @@ startQuizbtn.addEventListener("click", function() {
         questionFiveContainer.remove();
         clearInterval(timeLeft);
         countDownEl.remove()
+        timeScore = time;
         endQuiz();
         },1000)
         time = time - 5;
@@ -1161,10 +1168,20 @@ function endQuiz() {
   containerDiv.id = 'endQuizContainer';
   quizContent.appendChild(containerDiv);
 
-  // Makes the p for Question Five
-  // CSS name = container
+  // Makes the p for End Quiz Statement
+  // CSS name = endQuizStatement
   var endQuizStatement = document.createElement('p');
-  endQuizStatement.textContent = 'You have completed the quiz';
+  endQuizStatement.id = 'endQuizStatement';
+  endQuizStatement.textContent = 'All done!';
   containerDiv.appendChild(endQuizStatement);
+
+  // Makes the p for Final Score
+  // CSS name = endQuizStatement
+  var finalScore = document.createElement('p');
+  finalScore.id = 'finalScore';
+  finalScore.textContent = 'Your final time score is '+timeScore;
+  containerDiv.appendChild(finalScore);
+
+  
 
 }
