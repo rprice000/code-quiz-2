@@ -28,7 +28,8 @@ quizContent.appendChild(questionContainerDiv);
 let time = 75;
 var timeScore;
 
-startQuizbtn.addEventListener("click", function() {
+// startQuizbtn.addEventListener("click", function() {
+function startQuizFunction() {
     alert("button clicked");
     
     var timeLeft = setInterval(runTimer, 1000);
@@ -46,13 +47,16 @@ startQuizbtn.addEventListener("click", function() {
         countDownEl.innerHTML = 0;
         timeScore = 0;
         console.log(timeScore);
-        questionContainerDiv.remove();
+        // questionContainerDiv.remove();
+        // document.getElementById("questionContainerDiv").style.display = "none";
         return endQuiz();
       }
 
     }
+    document.getElementById("openingContent").style.display = "none";
 
-    openingContent.remove()
+    // openingContent.remove()
+////////////////////////////////////////////////////////////////////////////////////////Question One
     function runQuestionOne() {
 
       // Makes the container for Question One
@@ -78,7 +82,7 @@ startQuizbtn.addEventListener("click", function() {
       for (var i = 0; i < choicesOne.length; i++) {
         var questionOneButtons = document.createElement('button');
         questionOneButtons.className = 'itemButton';
-        questionOneButtons.id = 'itemChoice'+i;
+        questionOneButtons.id = 'questionOneItemChoice'+i;
         questionOneButtons.appendChild(document.createTextNode(choicesOne[i]));
         answerListOne.appendChild(questionOneButtons);
       }
@@ -87,7 +91,7 @@ startQuizbtn.addEventListener("click", function() {
       questionOneContent.appendChild(answerListOne);
     
       // Listener if Correct Choice is made.
-      document.getElementById('itemChoice2').addEventListener('click', function(event) {
+      document.getElementById('questionOneItemChoice2').addEventListener('click', function(event) {
         // Creates line and Correct! Note adds to bottom of List
         var lineBreak = document.createElement('hr');
         lineBreak.className = 'lineBreak';
@@ -98,13 +102,14 @@ startQuizbtn.addEventListener("click", function() {
         questionOneContent.appendChild(correctNote);
     // Store Correct Answer in Storage
         setTimeout(function(){
-          questionOneContainer.remove();
+          // questionOneContainer.remove();
+          document.getElementById("questionOneContainer").style.display = "none";
           runQuestionTwo();
           },1000)
       })
     
       // Listener if Incorrect Choice is made.
-      document.getElementById('itemChoice0').addEventListener('click', function(event) {
+      document.getElementById('questionOneItemChoice0').addEventListener('click', function(event) {
         // Creates line and Incorrect! Note adds to bottom of List
         var lineBreak = document.createElement('hr');
         lineBreak.className = 'lineBreak';
@@ -115,14 +120,15 @@ startQuizbtn.addEventListener("click", function() {
         questionOneContent.appendChild(incorrectNote);
     // Store Incorrect Answer in Storage
         setTimeout(function(){
-          questionOneContainer.remove();
+          // questionOneContainer.remove();
+          document.getElementById("questionOneContainer").style.display = "none";
           runQuestionTwo();
           },1000)
           time = time - 5;
         })
     
       // Listener if Incorrect Choice is made.
-      document.getElementById('itemChoice1').addEventListener('click', function(event) {
+      document.getElementById('questionOneItemChoice1').addEventListener('click', function(event) {
         // Creates line and Incorrect! Note adds to bottom of List
         var lineBreak = document.createElement('hr');
         lineBreak.className = 'lineBreak';
@@ -133,14 +139,15 @@ startQuizbtn.addEventListener("click", function() {
         questionOneContent.appendChild(incorrectNote);
     // Store Incorrect Answer in Storage
         setTimeout(function(){
-          questionOneContainer.remove();
+          // questionOneContainer.remove();
+          document.getElementById("questionOneContainer").style.display = "none";
           runQuestionTwo();
           },1000)
           time = time - 5;
         })
     
       // Listener if Incorrect Choice is made.
-      document.getElementById('itemChoice3').addEventListener('click', function(event) {
+      document.getElementById('questionOneItemChoice3').addEventListener('click', function(event) {
         // Creates line and Incorrect! Note adds to bottom of List
         var lineBreak = document.createElement('hr');
         lineBreak.className = 'lineBreak';
@@ -151,12 +158,15 @@ startQuizbtn.addEventListener("click", function() {
         questionOneContent.appendChild(incorrectNote);
     // Store Incorrect Answer in Storage
         setTimeout(function(){
-          questionOneContainer.remove();
+          // questionOneContainer.remove();
+          document.getElementById("questionOneContainer").style.display = "none";
           runQuestionTwo();
           },1000)
           time = time - 5;
         })
     }
+
+////////////////////////////////////////////////////////////////////////////////////////Question Two
     function runQuestionTwo() {
 
 
@@ -184,7 +194,7 @@ startQuizbtn.addEventListener("click", function() {
       for (var i = 0; i < choicesTwo.length; i++) {
         var questionTwoButtons = document.createElement('button');
         questionTwoButtons.className = 'itemButton';
-        questionTwoButtons.id = 'itemChoice'+i;
+        questionTwoButtons.id = 'questionTwoItemChoice'+i;
         questionTwoButtons.appendChild(document.createTextNode(choicesTwo[i]));
         answerListTwo.appendChild(questionTwoButtons);
       }
@@ -193,7 +203,7 @@ startQuizbtn.addEventListener("click", function() {
       questionTwoContent.appendChild(answerListTwo);
     
       // Listener if Correct Choice is made.
-      document.getElementById('itemChoice1').addEventListener('click', function(event) {
+      document.getElementById('questionTwoItemChoice1').addEventListener('click', function(event) {
         // Creates line and Correct! Note adds to bottom of List
         var lineBreak = document.createElement('hr');
         lineBreak.className = 'lineBreak';
@@ -204,13 +214,14 @@ startQuizbtn.addEventListener("click", function() {
         questionTwoContent.appendChild(correctNote);
     // Store Correct Answer in Storage
         setTimeout(function(){
-          questionTwoContainer.remove();
+          // questionTwoContainer.remove();
+          document.getElementById("questionContainerTwo").style.display = "none";
           runQuestionThree();
           },1000)
       })
     
       // Listener if Incorrect Choice is made.
-      document.getElementById('itemChoice0').addEventListener('click', function(event) {
+      document.getElementById('questionTwoItemChoice0').addEventListener('click', function(event) {
         // Creates line and Incorrect! Note adds to bottom of List
         var lineBreak = document.createElement('hr');
         lineBreak.className = 'lineBreak';
@@ -221,14 +232,15 @@ startQuizbtn.addEventListener("click", function() {
         questionTwoContent.appendChild(incorrectNote);
     // Store Incorrect Answer in Storage
         setTimeout(function(){
-          questionTwoContainer.remove();
+          // questionTwoContainer.remove();
+          document.getElementById("questionContainerTwo").style.display = "none";
           runQuestionThree();
           },1000)
           time = time - 5;
         })
     
       // Listener if Incorrect Choice is made.
-      document.getElementById('itemChoice2').addEventListener('click', function(event) {
+      document.getElementById('questionTwoItemChoice2').addEventListener('click', function(event) {
         // Creates line and Incorrect! Note adds to bottom of List
         var lineBreak = document.createElement('hr');
         lineBreak.className = 'lineBreak';
@@ -239,14 +251,15 @@ startQuizbtn.addEventListener("click", function() {
         questionTwoContent.appendChild(incorrectNote);
     // Store Incorrect Answer in Storage
         setTimeout(function(){
-          questionTwoContainer.remove();
+          // questionTwoContainer.remove();
+          document.getElementById("questionContainerTwo").style.display = "none";
           runQuestionThree();
           },1000)
           time = time - 5;
         })
     
       // Listener if Incorrect Choice is made.
-      document.getElementById('itemChoice3').addEventListener('click', function(event) {
+      document.getElementById('questionTwoItemChoice3').addEventListener('click', function(event) {
         // Creates line and Incorrect! Note adds to bottom of List
         var lineBreak = document.createElement('hr');
         lineBreak.className = 'lineBreak';
@@ -257,12 +270,14 @@ startQuizbtn.addEventListener("click", function() {
         questionTwoContent.appendChild(incorrectNote);
     // Store Incorrect Answer in Storage
         setTimeout(function(){
-          questionTwoContainer.remove();
+          // questionTwoContainer.remove();
+          document.getElementById("questionContainerTwo").style.display = "none";
           runQuestionThree();
           },1000)
           time = time - 5;
         })
     }
+////////////////////////////////////////////////////////////////////////////////////////Question Three
     function runQuestionThree() {
 
 
@@ -290,7 +305,7 @@ startQuizbtn.addEventListener("click", function() {
      for (var i = 0; i < choicesThree.length; i++) {
        var questionThreeButtons = document.createElement('button');
        questionThreeButtons.className = 'itemButton';
-       questionThreeButtons.id = 'itemChoice'+i;
+       questionThreeButtons.id = 'questionThreeItemChoice'+i;
        questionThreeButtons.appendChild(document.createTextNode(choicesThree[i]));
        answerListThree.appendChild(questionThreeButtons);
      }
@@ -299,7 +314,7 @@ startQuizbtn.addEventListener("click", function() {
      questionThreeContent.appendChild(answerListThree);
    
      // Listener if Correct Choice is made.
-     document.getElementById('itemChoice3').addEventListener('click', function(event) {
+     document.getElementById('questionThreeItemChoice3').addEventListener('click', function(event) {
        // Creates line and Correct! Note adds to bottom of List
        var lineBreak = document.createElement('hr');
        lineBreak.className = 'lineBreak';
@@ -310,13 +325,14 @@ startQuizbtn.addEventListener("click", function() {
        questionThreeContent.appendChild(correctNote);
    // Store Correct Answer in Storage
        setTimeout(function(){
-         questionThreeContainer.remove();
+        //  questionThreeContainer.remove();
+         document.getElementById("questionContainerThree").style.display = "none";
          runQuestionFour();
          },1000)
      })
    
      // Listener if Incorrect Choice is made.
-     document.getElementById('itemChoice0').addEventListener('click', function(event) {
+     document.getElementById('questionThreeItemChoice0').addEventListener('click', function(event) {
        // Creates line and Incorrect! Note adds to bottom of List
        var lineBreak = document.createElement('hr');
        lineBreak.className = 'lineBreak';
@@ -327,14 +343,15 @@ startQuizbtn.addEventListener("click", function() {
        questionThreeContent.appendChild(incorrectNote);
    // Store Incorrect Answer in Storage
        setTimeout(function(){
-         questionThreeContainer.remove();
+        //  questionThreeContainer.remove();
+         document.getElementById("questionContainerThree").style.display = "none";
          runQuestionFour();
          },1000)
          time = time - 5;
        })
    
      // Listener if Incorrect Choice is made.
-     document.getElementById('itemChoice1').addEventListener('click', function(event) {
+     document.getElementById('questionThreeItemChoice1').addEventListener('click', function(event) {
        // Creates line and Incorrect! Note adds to bottom of List
        var lineBreak = document.createElement('hr');
        lineBreak.className = 'lineBreak';
@@ -345,14 +362,15 @@ startQuizbtn.addEventListener("click", function() {
        questionThreeContent.appendChild(incorrectNote);
    // Store Incorrect Answer in Storage
        setTimeout(function(){
-         questionThreeContainer.remove();
+        //  questionThreeContainer.remove();
+         document.getElementById("questionContainerThree").style.display = "none";
          runQuestionFour();
          },1000)
          time = time - 5;
        })
    
      // Listener if Incorrect Choice is made.
-     document.getElementById('itemChoice2').addEventListener('click', function(event) {
+     document.getElementById('questionThreeItemChoice2').addEventListener('click', function(event) {
        // Creates line and Incorrect! Note adds to bottom of List
        var lineBreak = document.createElement('hr');
        lineBreak.className = 'lineBreak';
@@ -363,14 +381,15 @@ startQuizbtn.addEventListener("click", function() {
        questionThreeContent.appendChild(incorrectNote);
    // Store Incorrect Answer in Storage
        setTimeout(function(){
-         questionThreeContainer.remove();
+        //  questionThreeContainer.remove();
+         document.getElementById("questionContainerThree").style.display = "none";
          runQuestionFour();
          },1000)
          time = time - 5;
        })
    
    }
-
+////////////////////////////////////////////////////////////////////////////////////////Question Four
    function runQuestionFour() {
 
 
@@ -398,7 +417,7 @@ startQuizbtn.addEventListener("click", function() {
     for (var i = 0; i < choicesFour.length; i++) {
       var questionFourButtons = document.createElement('button');
       questionFourButtons.className = 'itemButton';
-      questionFourButtons.id = 'itemChoice'+i;
+      questionFourButtons.id = 'questionFourItemChoice'+i;
       questionFourButtons.appendChild(document.createTextNode(choicesFour[i]));
       answerListFour.appendChild(questionFourButtons);
     }
@@ -407,7 +426,7 @@ startQuizbtn.addEventListener("click", function() {
     questionFourContent.appendChild(answerListFour);
   
     // Listener if Correct Choice is made.
-    document.getElementById('itemChoice2').addEventListener('click', function(event) {
+    document.getElementById('questionFourItemChoice2').addEventListener('click', function(event) {
       // Creates line and Correct! Note adds to bottom of List
       var lineBreak = document.createElement('hr');
       lineBreak.className = 'lineBreak';
@@ -418,13 +437,14 @@ startQuizbtn.addEventListener("click", function() {
       questionFourContent.appendChild(correctNote);
   // Store Correct Answer in Storage
       setTimeout(function(){
-        questionFourContainer.remove();
+        // questionFourContainer.remove();
+        document.getElementById("questionContainerFour").style.display = "none";
         runQuestionFive();
         },1000)
     })
   
     // Listener if Incorrect Choice is made.
-    document.getElementById('itemChoice0').addEventListener('click', function(event) {
+    document.getElementById('questionFourItemChoice0').addEventListener('click', function(event) {
       // Creates line and Incorrect! Note adds to bottom of List
       var lineBreak = document.createElement('hr');
       lineBreak.className = 'lineBreak';
@@ -435,14 +455,15 @@ startQuizbtn.addEventListener("click", function() {
       questionFourContent.appendChild(incorrectNote);
   // Store Incorrect Answer in Storage
       setTimeout(function(){
-        questionFourContainer.remove();
+        // questionFourContainer.remove();
+        document.getElementById("questionContainerFour").style.display = "none";
         runQuestionFive();
         },1000)
         time = time - 5;
       })
   
     // Listener if Incorrect Choice is made.
-    document.getElementById('itemChoice1').addEventListener('click', function(event) {
+    document.getElementById('questionFourItemChoice1').addEventListener('click', function(event) {
       // Creates line and Incorrect! Note adds to bottom of List
       var lineBreak = document.createElement('hr');
       lineBreak.className = 'lineBreak';
@@ -453,14 +474,15 @@ startQuizbtn.addEventListener("click", function() {
       questionFourContent.appendChild(incorrectNote);
   // Store Incorrect Answer in Storage
       setTimeout(function(){
-        questionFourContainer.remove();
+        // questionFourContainer.remove();
+        document.getElementById("questionContainerFour").style.display = "none";
         runQuestionFive();
         },1000)
         time = time - 5;
       })
   
     // Listener if Incorrect Choice is made.
-    document.getElementById('itemChoice3').addEventListener('click', function(event) {
+    document.getElementById('questionFourItemChoice3').addEventListener('click', function(event) {
       // Creates line and Incorrect! Note adds to bottom of List
       var lineBreak = document.createElement('hr');
       lineBreak.className = 'lineBreak';
@@ -471,12 +493,15 @@ startQuizbtn.addEventListener("click", function() {
       questionFourContent.appendChild(incorrectNote);
   // Store Incorrect Answer in Storage
       setTimeout(function(){
-        questionFourContainer.remove();
+        // questionFourContainer.remove();
+        document.getElementById("questionContainerFour").style.display = "none";
         runQuestionFive();
         },1000)
         time = time - 5;
       })
   }
+
+////////////////////////////////////////////////////////////////////////////////////////Question Five
   function runQuestionFive() {
 
 
@@ -504,7 +529,7 @@ startQuizbtn.addEventListener("click", function() {
     for (var i = 0; i < choicesFive.length; i++) {
       var questionFiveButtons = document.createElement('button');
       questionFiveButtons.className = 'itemButton';
-      questionFiveButtons.id = 'itemChoice'+i;
+      questionFiveButtons.id = 'questionFiveItemChoice'+i;
       questionFiveButtons.appendChild(document.createTextNode(choicesFive[i]));
       answerListFive.appendChild(questionFiveButtons);
     }
@@ -513,7 +538,7 @@ startQuizbtn.addEventListener("click", function() {
     questionFiveContent.appendChild(answerListFive);
   
     // Listener if Correct Choice is made.
-    document.getElementById('itemChoice3').addEventListener('click', function(event) {
+    document.getElementById('questionFiveItemChoice3').addEventListener('click', function(event) {
       // Creates line and Correct! Note adds to bottom of List
       var lineBreak = document.createElement('hr');
       lineBreak.className = 'lineBreak';
@@ -524,16 +549,18 @@ startQuizbtn.addEventListener("click", function() {
       questionFiveContent.appendChild(correctNote);
   // Store Correct Answer in Storage
       setTimeout(function(){
-        questionFiveContainer.remove();
+        // questionFiveContainer.remove();
+        document.getElementById("questionContainerFive").style.display = "none";
         clearInterval(timeLeft);
-        countDownEl.remove()
+        // countDownEl.remove()
+        document.getElementById("countDown").style.display = "none";
         timeScore = time;
         endQuiz();
         },1000)
     })
   
     // Listener if Incorrect Choice is made.
-    document.getElementById('itemChoice0').addEventListener('click', function(event) {
+    document.getElementById('questionFiveItemChoice0').addEventListener('click', function(event) {
       // Creates line and Incorrect! Note adds to bottom of List
       var lineBreak = document.createElement('hr');
       lineBreak.className = 'lineBreak';
@@ -544,9 +571,11 @@ startQuizbtn.addEventListener("click", function() {
       questionFiveContent.appendChild(incorrectNote);
   // Store Incorrect Answer in Storage
       setTimeout(function(){
-        questionFiveContainer.remove();
+        // questionFiveContainer.remove();
+        document.getElementById("questionContainerFive").style.display = "none";
         clearInterval(timeLeft);
-        countDownEl.remove()
+        // countDownEl.remove()
+        document.getElementById("countDown").style.display = "none";
         timeScore = time;
         endQuiz();
         },1000)
@@ -554,7 +583,7 @@ startQuizbtn.addEventListener("click", function() {
       })
   
     // Listener if Incorrect Choice is made.
-    document.getElementById('itemChoice1').addEventListener('click', function(event) {
+    document.getElementById('questionFiveItemChoice1').addEventListener('click', function(event) {
       // Creates line and Incorrect! Note adds to bottom of List
       var lineBreak = document.createElement('hr');
       lineBreak.className = 'lineBreak';
@@ -565,9 +594,11 @@ startQuizbtn.addEventListener("click", function() {
       questionFiveContent.appendChild(incorrectNote);
   // Store Incorrect Answer in Storage
       setTimeout(function(){
-        questionFiveContainer.remove();
+        // questionFiveContainer.remove();
+        document.getElementById("questionContainerFive").style.display = "none";
         clearInterval(timeLeft);
-        countDownEl.remove()
+        // countDownEl.remove()
+        document.getElementById("countDown").style.display = "none";
         timeScore = time;
         endQuiz();
         },1000)
@@ -575,7 +606,7 @@ startQuizbtn.addEventListener("click", function() {
       })
   
     // Listener if Incorrect Choice is made.
-    document.getElementById('itemChoice2').addEventListener('click', function(event) {
+    document.getElementById('questionFiveItemChoice2').addEventListener('click', function(event) {
       // Creates line and Incorrect! Note adds to bottom of List
       var lineBreak = document.createElement('hr');
       lineBreak.className = 'lineBreak';
@@ -586,9 +617,11 @@ startQuizbtn.addEventListener("click", function() {
       questionFiveContent.appendChild(incorrectNote);
   // Store Incorrect Answer in Storage
       setTimeout(function(){
-        questionFiveContainer.remove();
+        // questionFiveContainer.remove();
+        document.getElementById("questionContainerFive").style.display = "none";
         clearInterval(timeLeft);
-        countDownEl.remove()
+        // countDownEl.remove()
+        document.getElementById("countDown").style.display = "none";
         timeScore = time;
         endQuiz();
         },1000)
@@ -599,8 +632,8 @@ startQuizbtn.addEventListener("click", function() {
 
     runQuestionOne();
     runTimer()
-  });
-
+  // });
+};
 
 
 
@@ -680,7 +713,8 @@ function endQuiz() {
     console.log(initialsScoreCombo)
     currentUserData.push(initialsScoreCombo)
     console.log(currentUserData)
-    containerDiv.remove()
+    // containerDiv.remove()
+    document.getElementById("endQuizContainer").style.display = "none";
     displayHighScores()
   });
 }
@@ -737,8 +771,15 @@ function displayHighScores() {
   // Event Listener for Clearing All Scores
   clearHighScoresBtn.addEventListener("click", function() {
     alert("Cleared All Scores");
-   
-    
+   highScoresArray.legnth = 0;
+   currentUserData.length = 0;
+  });
+
+  goBackBtn.addEventListener("click", function() {
+    alert("Going Back");
+    document.getElementById("finalScoresContainerDiv").style.display = "none";
+    document.getElementById("finalScoresBtnContainer").style.display = "none";
+    document.getElementById("openingContent").style.display = "block";
   });
 
 };
