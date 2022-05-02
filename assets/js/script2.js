@@ -33,6 +33,31 @@ quizContent.appendChild(questionContainerDiv);
 let time = 75;
 var timeScore;
 
+
+///// Line Break
+var lineBreak = document.createElement("hr");
+lineBreak.className = "lineBreak";
+lineBreak.id = "questionLineBreak" 
+quizContent.appendChild(lineBreak);
+document.getElementById("questionLineBreak").style.display = "none";
+
+
+
+var correctNote = document.createElement("p");
+correctNote.textContent = "Correct!";
+correctNote.className = "correctNote";
+correctNote.id = "correctNotification"
+quizContent.appendChild(correctNote); 
+document.getElementById("correctNotification").style.display = "none";
+
+var incorrectNote = document.createElement("p");
+incorrectNote.textContent = "Inorrect!";
+incorrectNote.className = "incorrectNote";
+incorrectNote.id = "incorrectNotification"
+quizContent.appendChild(incorrectNote);
+document.getElementById("incorrectNotification").style.display = "none";
+
+
 //////////////////////////////////////////////////////////////////////QUESTION ONE START/////////////////////////////////////////////
 // Makes the container for Question One
 // CSS id = questionOneContainer
@@ -64,93 +89,51 @@ for (var i = 0; i < choicesOne.length; i++) {
 
 // Adds UnorderList to Container Div
 questionOneContent.appendChild(answerListOne);
-
-// Listener if Correct Choice is made.
 document
   .getElementById("questionOneItemChoice2")
-  .addEventListener("click", function (event) {
-    // Creates line and Correct! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionOneContent.appendChild(lineBreak);
-    var correctNote = document.createElement("p");
-    correctNote.textContent = "Correct!";
-    correctNote.className = "correctNote";
-    questionOneContent.appendChild(correctNote);
+  .addEventListener("click", questionOneListen);
+document
+  .getElementById("questionOneItemChoice0")
+  .addEventListener("click", questionOneListen);
+document
+  .getElementById("questionOneItemChoice1")
+  .addEventListener("click", questionOneListen);
+document
+  .getElementById("questionOneItemChoice3")
+  .addEventListener("click", questionOneListen);
+
+function questionOneListen(event) {
+  if (event.target.id === "questionOneItemChoice2") {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("correctNotification").style.display = "block";
     // Store Correct Answer in Storage
     setTimeout(function () {
       // questionOneContainer.remove();
       document.getElementById("questionOneContainer").style.display = "none";
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("correctNotification").style.display = "none";
       //   runQuestionTwo();
       document.getElementById("questionContainerTwo").style.display = "block";
     }, 1000);
-  });
-
-// Listener if Incorrect Choice is made.
-document
-  .getElementById("questionOneItemChoice0")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionOneContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionOneContent.appendChild(incorrectNote);
+  } else if (
+    event.target.id === "questionOneItemChoice0" ||
+    event.target.id === "questionOneItemChoice1" ||
+    event.target.id === "questionOneItemChoice3"
+  ) {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("incorrectNotification").style.display = "block";
     // Store Incorrect Answer in Storage
     setTimeout(function () {
       // questionOneContainer.remove();
       document.getElementById("questionOneContainer").style.display = "none";
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("incorrectNotification").style.display = "none";
       //   runQuestionTwo();
       document.getElementById("questionContainerTwo").style.display = "block";
     }, 1000);
     time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
-document
-  .getElementById("questionOneItemChoice1")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionOneContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionOneContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionOneContainer").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerTwo").style.display = "block";
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
-document
-  .getElementById("questionOneItemChoice3")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionOneContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionOneContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionOneContainer").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerTwo").style.display = "block";
-    }, 1000);
-    time = time - 5;
-  });
+  }
+}
 
 document.getElementById("questionOneContainer").style.display = "none";
 
@@ -189,93 +172,51 @@ for (var i = 0; i < choicesTwo.length; i++) {
 
 // Adds UnorderList to Container Div
 questionTwoContent.appendChild(answerListTwo);
-
-// Listener if Correct Choice is made.
 document
   .getElementById("questionTwoItemChoice1")
-  .addEventListener("click", function (event) {
-    // Creates line and Correct! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionTwoContent.appendChild(lineBreak);
-    var correctNote = document.createElement("p");
-    correctNote.textContent = "Correct!";
-    correctNote.className = "correctNote";
-    questionTwoContent.appendChild(correctNote);
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      // questionTwoContainer.remove();
-      document.getElementById("questionContainerTwo").style.display = "none";
-      //   runQuestionThree();
-      document.getElementById("questionContainerThree").style.display = "block";
-    }, 1000);
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionTwoListen);
 document
   .getElementById("questionTwoItemChoice0")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionTwoContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionTwoContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionTwoContainer.remove();
-      document.getElementById("questionContainerTwo").style.display = "none";
-      //   runQuestionThree();
-      document.getElementById("questionContainerThree").style.display = "block";
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionTwoListen);
 document
   .getElementById("questionTwoItemChoice2")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionTwoContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionTwoContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionTwoContainer.remove();
-      document.getElementById("questionContainerTwo").style.display = "none";
-      //   runQuestionThree();
-      document.getElementById("questionContainerThree").style.display = "block";
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionTwoListen);
 document
   .getElementById("questionTwoItemChoice3")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionTwoContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionTwoContent.appendChild(incorrectNote);
+  .addEventListener("click", questionTwoListen);
+
+function questionTwoListen(event) {
+  if (event.target.id === "questionTwoItemChoice1") {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("correctNotification").style.display = "block";
+    // Store Correct Answer in Storage
+    setTimeout(function () {
+      // questionOneContainer.remove();
+      document.getElementById("questionContainerTwo").style.display = "none";
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("correctNotification").style.display = "none";
+      //   runQuestionTwo();
+      document.getElementById("questionContainerThree").style.display = "block";
+    }, 1000);
+  } else if (
+    event.target.id === "questionTwoItemChoice0" ||
+    event.target.id === "questionTwoItemChoice2" ||
+    event.target.id === "questionTwoItemChoice3"
+  ) {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("incorrectNotification").style.display = "block";
     // Store Incorrect Answer in Storage
     setTimeout(function () {
-      // questionTwoContainer.remove();
+      // questionOneContainer.remove();
       document.getElementById("questionContainerTwo").style.display = "none";
-      //   runQuestionThree();
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("incorrectNotification").style.display = "none";
+      //   runQuestionTwo();
       document.getElementById("questionContainerThree").style.display = "block";
     }, 1000);
     time = time - 5;
-  });
+  }
+}
 
 document.getElementById("questionContainerTwo").style.display = "none";
 
@@ -313,93 +254,51 @@ for (var i = 0; i < choicesThree.length; i++) {
 
 // Adds UnorderList to Container Div
 questionThreeContent.appendChild(answerListThree);
-
-// Listener if Correct Choice is made.
 document
   .getElementById("questionThreeItemChoice3")
-  .addEventListener("click", function (event) {
-    // Creates line and Correct! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionThreeContent.appendChild(lineBreak);
-    var correctNote = document.createElement("p");
-    correctNote.textContent = "Correct!";
-    correctNote.className = "correctNote";
-    questionThreeContent.appendChild(correctNote);
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      //  questionThreeContainer.remove();
-      document.getElementById("questionContainerThree").style.display = "none";
-      //  runQuestionFour();
-      document.getElementById("questionContainerFour").style.display = "block";
-    }, 1000);
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionThreeListen);
 document
   .getElementById("questionThreeItemChoice0")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionThreeContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionThreeContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      //  questionThreeContainer.remove();
-      document.getElementById("questionContainerThree").style.display = "none";
-      //  runQuestionFour();
-      document.getElementById("questionContainerFour").style.display = "block";
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionThreeListen);
 document
   .getElementById("questionThreeItemChoice1")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionThreeContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionThreeContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      //  questionThreeContainer.remove();
-      document.getElementById("questionContainerThree").style.display = "none";
-      //  runQuestionFour();
-      document.getElementById("questionContainerFour").style.display = "block";
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionThreeListen);
 document
   .getElementById("questionThreeItemChoice2")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionThreeContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionThreeContent.appendChild(incorrectNote);
+  .addEventListener("click", questionThreeListen);
+
+function questionThreeListen(event) {
+  if (event.target.id === "questionThreeItemChoice3") {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("correctNotification").style.display = "block";
+    // Store Correct Answer in Storage
+    setTimeout(function () {
+      // questionOneContainer.remove();
+      document.getElementById("questionContainerThree").style.display = "none";
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("correctNotification").style.display = "none";
+      //   runQuestionTwo();
+      document.getElementById("questionContainerFour").style.display = "block";
+    }, 1000);
+  } else if (
+    event.target.id === "questionThreeItemChoice0" ||
+    event.target.id === "questionThreeItemChoice1" ||
+    event.target.id === "questionThreeItemChoice2"
+  ) {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("incorrectNotification").style.display = "block";
     // Store Incorrect Answer in Storage
     setTimeout(function () {
-      //  questionThreeContainer.remove();
+      // questionOneContainer.remove();
       document.getElementById("questionContainerThree").style.display = "none";
-      //  runQuestionFour();
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("incorrectNotification").style.display = "none";
+      //   runQuestionTwo();
       document.getElementById("questionContainerFour").style.display = "block";
     }, 1000);
     time = time - 5;
-  });
+  }
+}
 
 document.getElementById("questionContainerThree").style.display = "none";
 
@@ -439,92 +338,51 @@ for (var i = 0; i < choicesFour.length; i++) {
 // Adds UnorderList to Container Div
 questionFourContent.appendChild(answerListFour);
 
-// Listener if Correct Choice is made.
 document
   .getElementById("questionFourItemChoice2")
-  .addEventListener("click", function (event) {
-    // Creates line and Correct! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionFourContent.appendChild(lineBreak);
-    var correctNote = document.createElement("p");
-    correctNote.textContent = "Correct!";
-    correctNote.className = "correctNote";
-    questionFourContent.appendChild(correctNote);
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      // questionFourContainer.remove();
-      document.getElementById("questionContainerFour").style.display = "none";
-      //   runQuestionFive();
-      document.getElementById("questionContainerFive").style.display = "block";
-    }, 1000);
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionFourListen);
 document
   .getElementById("questionFourItemChoice0")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionFourContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionFourContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionFourContainer.remove();
-      document.getElementById("questionContainerFour").style.display = "none";
-      //   runQuestionFive();
-      document.getElementById("questionContainerFive").style.display = "block";
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionFourListen);
 document
   .getElementById("questionFourItemChoice1")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionFourContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionFourContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionFourContainer.remove();
-      document.getElementById("questionContainerFour").style.display = "none";
-      //   runQuestionFive();
-      document.getElementById("questionContainerFive").style.display = "block";
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionFourListen);
 document
   .getElementById("questionFourItemChoice3")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionFourContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionFourContent.appendChild(incorrectNote);
+  .addEventListener("click", questionFourListen);
+
+function questionFourListen(event) {
+  if (event.target.id === "questionFourItemChoice2") {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("correctNotification").style.display = "block";
+    // Store Correct Answer in Storage
+    setTimeout(function () {
+      // questionOneContainer.remove();
+      document.getElementById("questionContainerFour").style.display = "none";
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("correctNotification").style.display = "none";
+      //   runQuestionTwo();
+      document.getElementById("questionContainerFive").style.display = "block";
+    }, 1000);
+  } else if (
+    event.target.id === "questionFourItemChoice0" ||
+    event.target.id === "questionFourItemChoice1" ||
+    event.target.id === "questionFourItemChoice3"
+  ) {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("incorrectNotification").style.display = "block";
     // Store Incorrect Answer in Storage
     setTimeout(function () {
-      // questionFourContainer.remove();
+      // questionOneContainer.remove();
       document.getElementById("questionContainerFour").style.display = "none";
-      //   runQuestionFive();
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("incorrectNotification").style.display = "none";
+      //   runQuestionTwo();
       document.getElementById("questionContainerFive").style.display = "block";
     }, 1000);
     time = time - 5;
-  });
+  }
+}
 
 document.getElementById("questionContainerFour").style.display = "none";
 //////////////////////////////////////////////////////////////////////QUESTION FOUR END/////////////////////////////////////////////
@@ -562,131 +420,170 @@ for (var i = 0; i < choicesFive.length; i++) {
 // Adds UnorderList to Container Div
 questionFiveContent.appendChild(answerListFive);
 
-// Listener if Correct Choice is made.
 document
   .getElementById("questionFiveItemChoice3")
-  .addEventListener("click", function (event) {
-    // Creates line and Correct! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionFiveContent.appendChild(lineBreak);
-    var correctNote = document.createElement("p");
-    correctNote.textContent = "Correct!";
-    correctNote.className = "correctNote";
-    questionFiveContent.appendChild(correctNote);
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      // questionFiveContainer.remove();
-      document.getElementById("questionContainerFive").style.display = "none";
-      clearInterval(timeLeft);
-      // countDownEl.remove()
-      document.getElementById("countDown").style.display = "none";
-      timeScore = time;
-      endQuiz();
-    }, 1000);
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionFiveListen);
 document
   .getElementById("questionFiveItemChoice0")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionFiveContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionFiveContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionFiveContainer.remove();
-      document.getElementById("questionContainerFive").style.display = "none";
-      clearInterval(timeLeft);
-      // countDownEl.remove()
-      document.getElementById("countDown").style.display = "none";
-      timeScore = time;
-      endQuiz();
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionFiveListen);
 document
   .getElementById("questionFiveItemChoice1")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionFiveContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionFiveContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionFiveContainer.remove();
-      document.getElementById("questionContainerFive").style.display = "none";
-      clearInterval(timeLeft);
-      // countDownEl.remove()
-      document.getElementById("countDown").style.display = "none";
-      timeScore = time;
-      endQuiz();
-    }, 1000);
-    time = time - 5;
-  });
-
-// Listener if Incorrect Choice is made.
+  .addEventListener("click", questionFiveListen);
 document
   .getElementById("questionFiveItemChoice2")
-  .addEventListener("click", function (event) {
-    // Creates line and Incorrect! Note adds to bottom of List
-    var lineBreak = document.createElement("hr");
-    lineBreak.className = "lineBreak";
-    questionFiveContent.appendChild(lineBreak);
-    var incorrectNote = document.createElement("p");
-    incorrectNote.textContent = "Inorrect!";
-    incorrectNote.className = "incorrectNote";
-    questionFiveContent.appendChild(incorrectNote);
-    // Store Incorrect Answer in Storage
+  .addEventListener("click", questionFiveListen);
+
+function questionFiveListen(event) {
+  if (event.target.id === "questionFiveItemChoice3") {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("correctNotification").style.display = "block";
+    // Store Correct Answer in Storage
     setTimeout(function () {
-      // questionFiveContainer.remove();
+      // questionOneContainer.remove();
       document.getElementById("questionContainerFive").style.display = "none";
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("correctNotification").style.display = "none";
       clearInterval(timeLeft);
-      // countDownEl.remove()
+      //   runQuestionTwo();
       document.getElementById("countDown").style.display = "none";
       timeScore = time;
-      endQuiz();
+      //   endQuiz();
+      document.getElementById("endQuizContainer").style.display = "block";
+    }, 1000);
+  } else if (
+    event.target.id === "questionFiveItemChoice0" ||
+    event.target.id === "questionFiveItemChoice1" ||
+    event.target.id === "questionFiveItemChoice2"
+  ) {
+    document.getElementById("questionLineBreak").style.display = "block";
+    document.getElementById("incorrectNotification").style.display = "block";
+    // Store Incorrect Answer in Storage
+    setTimeout(function () {
+      // questionOneContainer.remove();
+      document.getElementById("questionContainerFive").style.display = "none";
+      document.getElementById("questionLineBreak").style.display = "none";
+      document.getElementById("incorrectNotification").style.display = "none";
+      clearInterval(timeLeft);
+      //   runQuestionTwo();
+      document.getElementById("countDown").style.display = "none";
+      timeScore = time;
+      //  endQuiz();
+      document.getElementById("endQuizContainer").style.display = "block";
     }, 1000);
     time = time - 5;
-  });
+  }
+}
 
 document.getElementById("questionContainerFive").style.display = "none";
 //////////////////////////////////////////////////////////////////////QUESTION FIVE END/////////////////////////////////////////////
 
+
+//////////////////////////////////////////////////////////////////////END QUIZ START/////////////////////////////////////////////
+
+
+// Makes the container for End Quiz
+// CSS name = container
+var endQuizContainerDiv = document.createElement("div");
+endQuizContainerDiv.className = "container";
+endQuizContainerDiv.id = "endQuizContainer";
+quizContent.appendChild(endQuizContainerDiv);
+
+// Makes the p for End Quiz Statement
+// CSS name = endQuizStatement
+var endQuizStatement = document.createElement("p");
+endQuizStatement.id = "endQuizStatement";
+endQuizStatement.textContent = "All done!";
+endQuizContainerDiv.appendChild(endQuizStatement);
+
+// Makes the p for Final Score
+// CSS name = endQuizStatement
+var finalScore = document.createElement("p");
+finalScore.id = "finalScore";
+finalScore.textContent = "Your final time score is: " + timeScore;
+endQuizContainerDiv.appendChild(finalScore);
+
+// Makes the container for Submit Initials
+// CSS name = endQuizStatement
+var submitInitialsContainer = document.createElement("div");
+submitInitialsContainer.id = "submitInitialsContainer";
+endQuizContainerDiv.appendChild(submitInitialsContainer);
+
+// Makes the p for Submit Initials
+// CSS name = pSubmitInitials
+var pSubmitInitials = document.createElement("p");
+pSubmitInitials.id = "pSubmitInitials";
+pSubmitInitials.textContent = "Enter Initials";
+submitInitialsContainer.appendChild(pSubmitInitials);
+
+// Make input for Submit Initials
+// CSS name = inputSubmitInitials
+var inputSubmitInitials = document.createElement('input');
+inputSubmitInitials.id = 'inputSubmitInitials';
+inputSubmitInitials.type = 'text';
+submitInitialsContainer.appendChild(inputSubmitInitials);
+
+// Make button for Submit Initials
+// CSS name = submitScorebtn
+var submitScorebtn = document.createElement('input');
+submitScorebtn.id = 'submitScorebtn';
+submitScorebtn.setAttribute('type', 'submit');
+submitInitialsContainer.appendChild(submitScorebtn);
+
+// Event Listener for Submitting Initials and Score
+submitScorebtn.addEventListener("click", function () {
+  alert("You got me");
+  var initialsValue = document.getElementById("inputSubmitInitials").value;
+  console.log(initialsValue);
+  var initialsScoreCombo = initialsValue + " - " + timeScore;
+  console.log(initialsScoreCombo);
+  currentUserData.push(initialsScoreCombo);
+  console.log(currentUserData);
+  // containerDiv.remove()
+  document.getElementById("endQuizContainer").style.display = "none";
+//   displayHighScores();
+});
+
+document.getElementById("endQuizContainer").style.display = "none";
+
+//////////////////////////////////////////////////////////////////////END QUIZ END/////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
 function startQuizFunction() {
   alert("button clicked");
 
-  var timeLeft = setInterval(runTimer, 1000);
-  var countDownEl = document.getElementById("countDown");
-  function runTimer() {
-    // var countDownEl = document.getElementById('countDown');
-    let seconds = time;
-
-    countDownEl.innerHTML = `${seconds}`;
-
-    time--;
-
-    if (time <= 0) {
-      clearInterval(timeLeft);
-      countDownEl.innerHTML = 0;
-      timeScore = 0;
-      console.log(timeScore);
-      // questionContainerDiv.remove();
-      // document.getElementById("questionContainerDiv").style.display = "none";
-      return endQuiz();
-    }
-  }
   document.getElementById("openingContent").style.display = "none";
   document.getElementById("questionOneContainer").style.display = "block";
+}
+
+var timeLeft = setInterval(runTimer, 1000);
+var countDownEl = document.getElementById('countDown');
+function runTimer() {
+    event.preventDefault;
+  // var countDownEl = document.getElementById('countDown');
+  let seconds = time;
+
+  countDownEl.innerHTML = `${seconds}`;
+  
+  time--;
+
+  if (time <= 0) {
+    clearInterval(timeLeft);
+    countDownEl.innerHTML = 0;
+    timeScore = 0;
+    console.log(timeScore);
+    // questionContainerDiv.remove();
+    // document.getElementById("questionContainerDiv").style.display = "none";
+    return endQuiz();
+  }
 }
