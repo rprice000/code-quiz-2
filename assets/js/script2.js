@@ -30,33 +30,29 @@ questionContainerDiv.className = "container";
 questionContainerDiv.id = "questionsContainer";
 quizContent.appendChild(questionContainerDiv);
 
-let time = 75;
-var timeScore;
-
+// let time = 75;
+// var timeScore;
 
 ///// Line Break
 var lineBreak = document.createElement("hr");
 lineBreak.className = "lineBreak";
-lineBreak.id = "questionLineBreak" 
+lineBreak.id = "questionLineBreak";
 quizContent.appendChild(lineBreak);
 document.getElementById("questionLineBreak").style.display = "none";
-
-
 
 var correctNote = document.createElement("p");
 correctNote.textContent = "Correct!";
 correctNote.className = "correctNote";
-correctNote.id = "correctNotification"
-quizContent.appendChild(correctNote); 
+correctNote.id = "correctNotification";
+quizContent.appendChild(correctNote);
 document.getElementById("correctNotification").style.display = "none";
 
 var incorrectNote = document.createElement("p");
 incorrectNote.textContent = "Inorrect!";
 incorrectNote.className = "incorrectNote";
-incorrectNote.id = "incorrectNotification"
+incorrectNote.id = "incorrectNotification";
 quizContent.appendChild(incorrectNote);
 document.getElementById("incorrectNotification").style.display = "none";
-
 
 //////////////////////////////////////////////////////////////////////QUESTION ONE START/////////////////////////////////////////////
 // Makes the container for Question One
@@ -130,8 +126,9 @@ function questionOneListen(event) {
       document.getElementById("incorrectNotification").style.display = "none";
       //   runQuestionTwo();
       document.getElementById("questionContainerTwo").style.display = "block";
+      time = time - 5;
     }, 1000);
-    time = time - 5;
+    // time = time - 5;
   }
 }
 
@@ -213,8 +210,9 @@ function questionTwoListen(event) {
       document.getElementById("incorrectNotification").style.display = "none";
       //   runQuestionTwo();
       document.getElementById("questionContainerThree").style.display = "block";
+      time = time - 5;
     }, 1000);
-    time = time - 5;
+    // time = time - 5;
   }
 }
 
@@ -295,8 +293,9 @@ function questionThreeListen(event) {
       document.getElementById("incorrectNotification").style.display = "none";
       //   runQuestionTwo();
       document.getElementById("questionContainerFour").style.display = "block";
+      time = time - 5;
     }, 1000);
-    time = time - 5;
+    // time = time - 5;
   }
 }
 
@@ -379,8 +378,9 @@ function questionFourListen(event) {
       document.getElementById("incorrectNotification").style.display = "none";
       //   runQuestionTwo();
       document.getElementById("questionContainerFive").style.display = "block";
+      time = time - 5;
     }, 1000);
-    time = time - 5;
+    // time = time - 5;
   }
 }
 
@@ -469,17 +469,16 @@ function questionFiveListen(event) {
       timeScore = time;
       //  endQuiz();
       document.getElementById("endQuizContainer").style.display = "block";
+      time = time - 5;
     }, 1000);
-    time = time - 5;
+    // time = time - 5;
   }
 }
 
 document.getElementById("questionContainerFive").style.display = "none";
 //////////////////////////////////////////////////////////////////////QUESTION FIVE END/////////////////////////////////////////////
 
-
 //////////////////////////////////////////////////////////////////////END QUIZ START/////////////////////////////////////////////
-
 
 // Makes the container for End Quiz
 // CSS name = container
@@ -517,16 +516,16 @@ submitInitialsContainer.appendChild(pSubmitInitials);
 
 // Make input for Submit Initials
 // CSS name = inputSubmitInitials
-var inputSubmitInitials = document.createElement('input');
-inputSubmitInitials.id = 'inputSubmitInitials';
-inputSubmitInitials.type = 'text';
+var inputSubmitInitials = document.createElement("input");
+inputSubmitInitials.id = "inputSubmitInitials";
+inputSubmitInitials.type = "text";
 submitInitialsContainer.appendChild(inputSubmitInitials);
 
 // Make button for Submit Initials
 // CSS name = submitScorebtn
-var submitScorebtn = document.createElement('input');
-submitScorebtn.id = 'submitScorebtn';
-submitScorebtn.setAttribute('type', 'submit');
+var submitScorebtn = document.createElement("input");
+submitScorebtn.id = "submitScorebtn";
+submitScorebtn.setAttribute("type", "submit");
 submitInitialsContainer.appendChild(submitScorebtn);
 
 // Event Listener for Submitting Initials and Score
@@ -540,23 +539,15 @@ submitScorebtn.addEventListener("click", function () {
   console.log(currentUserData);
   // containerDiv.remove()
   document.getElementById("endQuizContainer").style.display = "none";
-//   displayHighScores();
+  //   displayHighScores();
 });
 
 document.getElementById("endQuizContainer").style.display = "none";
 
 //////////////////////////////////////////////////////////////////////END QUIZ END/////////////////////////////////////////////
 
-
-
-
-
-
-
-
-
-
-
+let time = 75;
+var timeScore;
 
 
 function startQuizFunction() {
@@ -564,26 +555,20 @@ function startQuizFunction() {
 
   document.getElementById("openingContent").style.display = "none";
   document.getElementById("questionOneContainer").style.display = "block";
-}
 
-var timeLeft = setInterval(runTimer, 1000);
-var countDownEl = document.getElementById('countDown');
-function runTimer() {
-    event.preventDefault;
-  // var countDownEl = document.getElementById('countDown');
-  let seconds = time;
+  var timeLeft = setInterval(counting, 1000);
 
-  countDownEl.innerHTML = `${seconds}`;
-  
-  time--;
-
-  if (time <= 0) {
-    clearInterval(timeLeft);
-    countDownEl.innerHTML = 0;
-    timeScore = 0;
-    console.log(timeScore);
-    // questionContainerDiv.remove();
-    // document.getElementById("questionContainerDiv").style.display = "none";
-    return endQuiz();
+  function counting() {
+    if (time <= 0) {
+      clearInterval(timeLeft);
+      document.getElementById("quizContent").style.display = "none";
+      alert("quiz done!");
+    } else {
+      document.getElementById("countDown").innerHTML =
+        time + "seconds remaining";
+    }
+    time -= 1;
   }
+
+  counting();
 }
