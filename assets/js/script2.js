@@ -19,8 +19,8 @@ var choicesFour = ["commas", "curly brackets", "quotes", "parenthesis"];
 var choicesFive = ["javascript", "terminal/bash", "for loops", "console.log"];
 
 var timeScore;
-// let currentUserData = [];
-// var highScoresArray = [];
+let currentUserData = [];
+var highScoresArray = [];
 
 
 // Makes the container for All Questions
@@ -549,8 +549,6 @@ function startQuizFunction() {
     document.getElementById("submitScorebtn").addEventListener("click", submission);
     // Event Listener for Submitting Initials and Score
     function submission() {
-    let currentUserData = [];
-    var highScoresArray = [];
 
     // Makes the p for displaying Current User initials and Score
     // CSS name = userInitilScore
@@ -562,18 +560,14 @@ function startQuizFunction() {
     var initialsValue = document.getElementById("inputSubmitInitials").value;
     var initialsScoreCombo = initialsValue + " - " + timeScore;
     
-    if (currentUserData.length == 0 ){
-        currentUserData.push(initialsScoreCombo);
-        console.log(currentUserData);
-        highScoresArray.push(currentUserData[0]);
-        console.log(highScoresArray);
-    } else if ( currentUserData.length == 1 ){
-        currentUserData.length = 0;
-        currentUserData.push(initialsScoreCombo);
-        console.log(currentUserData);
-        highScoresArray.push(currentUserData[0]);
-        console.log(highScoresArray);
-    }
+  
+    currentUserData.push(initialsScoreCombo);
+    console.log(currentUserData);
+  
+    highScoresArray.push(currentUserData);
+    console.log(highScoresArray);
+
+
 
       
 
@@ -600,6 +594,7 @@ function startQuizFunction() {
         document.getElementById("finalScoresContainerDiv").style.display = "none";
         document.getElementById("finalScoresBtnContainer").style.display = "none";
         document.getElementById("openingContent").style.display = "block";
+        currentUserData.length = 0;
       };
 
 }
