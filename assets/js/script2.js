@@ -3,7 +3,7 @@ var appContainer = document.querySelector("#appContainer");
 var openingContent = document.querySelector("#openingContent");
 var quizContent = document.querySelector("#quizContent");
 var startQuizbtn = document.querySelector("#startQuizButton");
-
+startQuizbtn.id = "startButton";
 var quizQuestions = [
   "1. Commonly used data types DO Not Include:",
   "2. The condition in an if/else statement is enclosed with _____.",
@@ -14,14 +14,14 @@ var quizQuestions = [
 
 var choicesOne = ["strings", "booleans", "alerts", "numbers"];
 var choicesTwo = ["quotes", "curly brackets", "parenthesis", "square brackets"];
-var choicesThree = [
-  "numbers and strings",
-  "other arrays",
-  "booleans",
-  "all of the above",
-];
+var choicesThree = ["numbers and strings","other arrays","booleans","all of the above",];
 var choicesFour = ["commas", "curly brackets", "quotes", "parenthesis"];
 var choicesFive = ["javascript", "terminal/bash", "for loops", "console.log"];
+
+var timeScore;
+// let currentUserData = [];
+// var highScoresArray = [];
+
 
 // Makes the container for All Questions
 // CSS name = container
@@ -30,23 +30,20 @@ questionContainerDiv.className = "container";
 questionContainerDiv.id = "questionsContainer";
 quizContent.appendChild(questionContainerDiv);
 
-// let time = 75;
-// var timeScore;
-
 ///// Line Break
 var lineBreak = document.createElement("hr");
 lineBreak.className = "lineBreak";
 lineBreak.id = "questionLineBreak";
 quizContent.appendChild(lineBreak);
 document.getElementById("questionLineBreak").style.display = "none";
-
+/// Correct Notification
 var correctNote = document.createElement("p");
 correctNote.textContent = "Correct!";
 correctNote.className = "correctNote";
 correctNote.id = "correctNotification";
 quizContent.appendChild(correctNote);
 document.getElementById("correctNotification").style.display = "none";
-
+/// Incorrect Notification
 var incorrectNote = document.createElement("p");
 incorrectNote.textContent = "Inorrect!";
 incorrectNote.className = "incorrectNote";
@@ -54,7 +51,8 @@ incorrectNote.id = "incorrectNotification";
 quizContent.appendChild(incorrectNote);
 document.getElementById("incorrectNotification").style.display = "none";
 
-//////////////////////////////////////////////////////////////////////QUESTION ONE START/////////////////////////////////////////////
+
+///////////////////////////////////////// Question One DOM Elements Start///////////////////////////////
 // Makes the container for Question One
 // CSS id = questionOneContainer
 var questionOneContainer = document.createElement("div");
@@ -85,59 +83,11 @@ for (var i = 0; i < choicesOne.length; i++) {
 
 // Adds UnorderList to Container Div
 questionOneContent.appendChild(answerListOne);
-document
-  .getElementById("questionOneItemChoice2")
-  .addEventListener("click", questionOneListen);
-document
-  .getElementById("questionOneItemChoice0")
-  .addEventListener("click", questionOneListen);
-document
-  .getElementById("questionOneItemChoice1")
-  .addEventListener("click", questionOneListen);
-document
-  .getElementById("questionOneItemChoice3")
-  .addEventListener("click", questionOneListen);
-
-function questionOneListen(event) {
-  if (event.target.id === "questionOneItemChoice2") {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("correctNotification").style.display = "block";
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionOneContainer").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("correctNotification").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerTwo").style.display = "block";
-    }, 1000);
-  } else if (
-    event.target.id === "questionOneItemChoice0" ||
-    event.target.id === "questionOneItemChoice1" ||
-    event.target.id === "questionOneItemChoice3"
-  ) {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("incorrectNotification").style.display = "block";
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionOneContainer").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("incorrectNotification").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerTwo").style.display = "block";
-      time = time - 5;
-    }, 1000);
-    // time = time - 5;
-  }
-}
 
 document.getElementById("questionOneContainer").style.display = "none";
+///////////////////////////////////////// Question One DOM Elements End///////////////////////////////
 
-//////////////////////////////////////////////////////////////////////QUESTION ONE END/////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////QUESTION TWO START/////////////////////////////////////////////
-
+///////////////////////////////////////// Question Two DOM Elements Start///////////////////////////////
 // Makes the container for Question Two
 // CSS name = container
 var questionTwoContainer = document.createElement("div");
@@ -169,58 +119,11 @@ for (var i = 0; i < choicesTwo.length; i++) {
 
 // Adds UnorderList to Container Div
 questionTwoContent.appendChild(answerListTwo);
-document
-  .getElementById("questionTwoItemChoice1")
-  .addEventListener("click", questionTwoListen);
-document
-  .getElementById("questionTwoItemChoice0")
-  .addEventListener("click", questionTwoListen);
-document
-  .getElementById("questionTwoItemChoice2")
-  .addEventListener("click", questionTwoListen);
-document
-  .getElementById("questionTwoItemChoice3")
-  .addEventListener("click", questionTwoListen);
-
-function questionTwoListen(event) {
-  if (event.target.id === "questionTwoItemChoice1") {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("correctNotification").style.display = "block";
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionContainerTwo").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("correctNotification").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerThree").style.display = "block";
-    }, 1000);
-  } else if (
-    event.target.id === "questionTwoItemChoice0" ||
-    event.target.id === "questionTwoItemChoice2" ||
-    event.target.id === "questionTwoItemChoice3"
-  ) {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("incorrectNotification").style.display = "block";
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionContainerTwo").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("incorrectNotification").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerThree").style.display = "block";
-      time = time - 5;
-    }, 1000);
-    // time = time - 5;
-  }
-}
 
 document.getElementById("questionContainerTwo").style.display = "none";
+///////////////////////////////////////// Question Two DOM Elements End///////////////////////////////
 
-//////////////////////////////////////////////////////////////////////QUESTION TWO END/////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////QUESTION THREE START/////////////////////////////////////////////
+///////////////////////////////////////// Question Three DOM Elements Start///////////////////////////////
 // Makes the container for Question Three
 // CSS name = container
 var questionThreeContainer = document.createElement("div");
@@ -252,59 +155,11 @@ for (var i = 0; i < choicesThree.length; i++) {
 
 // Adds UnorderList to Container Div
 questionThreeContent.appendChild(answerListThree);
-document
-  .getElementById("questionThreeItemChoice3")
-  .addEventListener("click", questionThreeListen);
-document
-  .getElementById("questionThreeItemChoice0")
-  .addEventListener("click", questionThreeListen);
-document
-  .getElementById("questionThreeItemChoice1")
-  .addEventListener("click", questionThreeListen);
-document
-  .getElementById("questionThreeItemChoice2")
-  .addEventListener("click", questionThreeListen);
-
-function questionThreeListen(event) {
-  if (event.target.id === "questionThreeItemChoice3") {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("correctNotification").style.display = "block";
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionContainerThree").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("correctNotification").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerFour").style.display = "block";
-    }, 1000);
-  } else if (
-    event.target.id === "questionThreeItemChoice0" ||
-    event.target.id === "questionThreeItemChoice1" ||
-    event.target.id === "questionThreeItemChoice2"
-  ) {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("incorrectNotification").style.display = "block";
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionContainerThree").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("incorrectNotification").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerFour").style.display = "block";
-      time = time - 5;
-    }, 1000);
-    // time = time - 5;
-  }
-}
 
 document.getElementById("questionContainerThree").style.display = "none";
+///////////////////////////////////////// Question Three DOM Elements End///////////////////////////////
 
-//////////////////////////////////////////////////////////////////////QUESTION THREE END/////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////QUESTION FOUR START/////////////////////////////////////////////
-
+///////////////////////////////////////// Question Four DOM Elements Start///////////////////////////////
 // Makes the container for Question Four
 // CSS name = container
 var questionFourContainer = document.createElement("div");
@@ -337,57 +192,10 @@ for (var i = 0; i < choicesFour.length; i++) {
 // Adds UnorderList to Container Div
 questionFourContent.appendChild(answerListFour);
 
-document
-  .getElementById("questionFourItemChoice2")
-  .addEventListener("click", questionFourListen);
-document
-  .getElementById("questionFourItemChoice0")
-  .addEventListener("click", questionFourListen);
-document
-  .getElementById("questionFourItemChoice1")
-  .addEventListener("click", questionFourListen);
-document
-  .getElementById("questionFourItemChoice3")
-  .addEventListener("click", questionFourListen);
-
-function questionFourListen(event) {
-  if (event.target.id === "questionFourItemChoice2") {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("correctNotification").style.display = "block";
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionContainerFour").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("correctNotification").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerFive").style.display = "block";
-    }, 1000);
-  } else if (
-    event.target.id === "questionFourItemChoice0" ||
-    event.target.id === "questionFourItemChoice1" ||
-    event.target.id === "questionFourItemChoice3"
-  ) {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("incorrectNotification").style.display = "block";
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionContainerFour").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("incorrectNotification").style.display = "none";
-      //   runQuestionTwo();
-      document.getElementById("questionContainerFive").style.display = "block";
-      time = time - 5;
-    }, 1000);
-    // time = time - 5;
-  }
-}
-
 document.getElementById("questionContainerFour").style.display = "none";
-//////////////////////////////////////////////////////////////////////QUESTION FOUR END/////////////////////////////////////////////
+///////////////////////////////////////// Question Four DOM Elements End///////////////////////////////
 
-//////////////////////////////////////////////////////////////////////QUESTION FIVE START/////////////////////////////////////////////
+///////////////////////////////////////// Question Five DOM Elements Start///////////////////////////////
 // Makes the container for Question Five
 // CSS name = container
 var questionFiveContainer = document.createElement("div");
@@ -420,155 +228,379 @@ for (var i = 0; i < choicesFive.length; i++) {
 // Adds UnorderList to Container Div
 questionFiveContent.appendChild(answerListFive);
 
-document
-  .getElementById("questionFiveItemChoice3")
-  .addEventListener("click", questionFiveListen);
-document
-  .getElementById("questionFiveItemChoice0")
-  .addEventListener("click", questionFiveListen);
-document
-  .getElementById("questionFiveItemChoice1")
-  .addEventListener("click", questionFiveListen);
-document
-  .getElementById("questionFiveItemChoice2")
-  .addEventListener("click", questionFiveListen);
-
-function questionFiveListen(event) {
-  if (event.target.id === "questionFiveItemChoice3") {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("correctNotification").style.display = "block";
-    // Store Correct Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionContainerFive").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("correctNotification").style.display = "none";
-      clearInterval(timeLeft);
-      //   runQuestionTwo();
-      document.getElementById("countDown").style.display = "none";
-      timeScore = time;
-      //   endQuiz();
-      document.getElementById("endQuizContainer").style.display = "block";
-    }, 1000);
-  } else if (
-    event.target.id === "questionFiveItemChoice0" ||
-    event.target.id === "questionFiveItemChoice1" ||
-    event.target.id === "questionFiveItemChoice2"
-  ) {
-    document.getElementById("questionLineBreak").style.display = "block";
-    document.getElementById("incorrectNotification").style.display = "block";
-    // Store Incorrect Answer in Storage
-    setTimeout(function () {
-      // questionOneContainer.remove();
-      document.getElementById("questionContainerFive").style.display = "none";
-      document.getElementById("questionLineBreak").style.display = "none";
-      document.getElementById("incorrectNotification").style.display = "none";
-      clearInterval(timeLeft);
-      //   runQuestionTwo();
-      document.getElementById("countDown").style.display = "none";
-      timeScore = time;
-      //  endQuiz();
-      document.getElementById("endQuizContainer").style.display = "block";
-      time = time - 5;
-    }, 1000);
-    // time = time - 5;
-  }
-}
-
 document.getElementById("questionContainerFive").style.display = "none";
-//////////////////////////////////////////////////////////////////////QUESTION FIVE END/////////////////////////////////////////////
+///////////////////////////////////////// Question Five DOM Elements End///////////////////////////////
+
+
+////////////////////////////////////////////End Quiz User Input DOM Elements Start/////////////////////
+    // Makes the container for End Quiz
+    // CSS name = container
+    var endQuizContainerDiv = document.createElement("div");
+    endQuizContainerDiv.className = "container";
+    endQuizContainerDiv.id = "endQuizContainer";
+    quizContent.appendChild(endQuizContainerDiv);
+
+    // Makes the p for End Quiz Statement
+    // CSS name = endQuizStatement
+    var endQuizStatement = document.createElement("p");
+    endQuizStatement.id = "endQuizStatement";
+    endQuizStatement.textContent = "All done!";
+    endQuizContainerDiv.appendChild(endQuizStatement);
+
+    // Makes the p for Final Score
+    // CSS name = endQuizStatement
+    var finalScore = document.createElement("p");
+    finalScore.id = "finalScore";
+    finalScore.textContent = "Your final time score is: " + timeScore;
+    endQuizContainerDiv.appendChild(finalScore);
+
+    // Makes the container for Submit Initials
+    // CSS name = endQuizStatement
+    var submitInitialsContainer = document.createElement("div");
+    submitInitialsContainer.id = "submitInitialsContainer";
+    endQuizContainerDiv.appendChild(submitInitialsContainer);
+
+    // Makes the p for Submit Initials
+    // CSS name = pSubmitInitials
+    var pSubmitInitials = document.createElement("p");
+    pSubmitInitials.id = "pSubmitInitials";
+    pSubmitInitials.textContent = "Enter Initials";
+    submitInitialsContainer.appendChild(pSubmitInitials);
+
+    // Make input for Submit Initials
+    // CSS name = inputSubmitInitials
+    var inputSubmitInitials = document.createElement("input");
+    inputSubmitInitials.id = "inputSubmitInitials";
+    inputSubmitInitials.type = "text";
+    submitInitialsContainer.appendChild(inputSubmitInitials);
+
+    // Make button for Submit Initials
+    // CSS name = submitScorebtn
+    var submitScorebtn = document.createElement("input");
+    submitScorebtn.id = "submitScorebtn";
+    submitScorebtn.setAttribute("type", "submit");
+    submitInitialsContainer.appendChild(submitScorebtn);
+
+    document.getElementById("endQuizContainer").style.display = "none";
+////////////////////////////////////////////End Quiz User Input DOM Elements End/////////////////////
+////////////////////////////////////////////Display High Scores DOM Elements Start/////////////////////
+ // Makes the container for Final Score
+  // CSS name = container
+  var finalScoresContainerDiv = document.createElement('div');
+  finalScoresContainerDiv.className = 'container';
+  finalScoresContainerDiv.id = 'finalScoresContainerDiv';
+  quizContent.appendChild(finalScoresContainerDiv);
+
+  // Makes the p for Final Score Statement
+  // CSS name = highScoresStatement
+  var highScoresStatement = document.createElement('p');
+  highScoresStatement.id = 'endQuizStatement';
+  highScoresStatement.textContent = 'High Scores';
+  finalScoresContainerDiv.appendChild(highScoresStatement);
+
+  // Makes the p for displaying Current User initials and Score
+  // CSS name = userInitilScore
+  // var userInitilScore = document.createElement('p');
+  // userInitilScore.className = 'userInitilScore';
+  // userInitilScore.id = 'userInitilScore';
+  // userInitilScore.appendChild(document.createTextNode(currentUserData));
+  // finalScoresContainerDiv.appendChild(userInitilScore);
+
+
+  // Makes the container for Final Score Buttons
+  // CSS name = container
+  var finalScoresBtnContainer = document.createElement('div');
+  finalScoresBtnContainer.className = 'container';
+  finalScoresBtnContainer.id = 'finalScoresBtnContainer';
+  quizContent.appendChild(finalScoresBtnContainer);
+
+  // Makes Two Buttons
+  // CSS Class names = finalButton
+  // CSS ID names = goBackBtn / clearHighScoresBtn
+  var goBackBtn = document.createElement('button');
+  goBackBtn.className = 'finalButton';
+  goBackBtn.id = 'goBackBtn';
+  goBackBtn.textContent = 'Go Back';
+  finalScoresContainerDiv.appendChild(goBackBtn);
+
+  var clearHighScoresBtn = document.createElement('button');
+  clearHighScoresBtn.className = 'finalButton';
+  clearHighScoresBtn.id = 'clearHighScoresBtn';
+  clearHighScoresBtn.textContent = 'Clear High Scores';
+  finalScoresContainerDiv.appendChild(clearHighScoresBtn);
+
+  document.getElementById("finalScoresContainerDiv").style.display = "none";
+////////////////////////////////////////////Display High Scores DOM Elements End/////////////////////
+
+
+var countDownEl = document.getElementById('countDown');
+
+document.getElementById("startButton").addEventListener("click", startQuizFunction);
+
+
+//////////////////////////////////////////START QUIZ FUNCTION START///////////////////////////////////////////////
+function startQuizFunction() {
+    let time = 75;
+
+    // let currentUserData = [];
+    // var highScoresArray = [];
+
+    document.getElementById("openingContent").style.display = "none";
+    document.getElementById("questionOneContainer").style.display = "block";
+ 
+
+    document.getElementById("countDown").style.display = "block";
+
+    var timeLeft = setInterval(runTimer, 1000);
+    var countDownEl = document.getElementById('countDown');
+    function runTimer() {
+    
+      countDownEl.innerHTML = `${time}`;
+      
+      time--;
+  
+      if (time <= 0) {
+        clearInterval(timeLeft);
+        countDownEl.innerHTML = 0;
+        timeScore = 0;
+        console.log(timeScore);
+        document.getElementById("questionsContainer").style.display = "none";
+        document.getElementById("endQuizContainer").style.display = "block";
+      } else {
+        document.getElementById("questionsContainer").style.display = "block";
+      }
+
+    }
+
+    //////////////////////////////////////////////////////////////////////QUESTION ONE START/////////////////////////////////////////////
+    document.getElementById("questionOneItemChoice2").addEventListener("click", questionOneListen);
+    document.getElementById("questionOneItemChoice0").addEventListener("click", questionOneListen);
+    document.getElementById("questionOneItemChoice1").addEventListener("click", questionOneListen);
+    document.getElementById("questionOneItemChoice3").addEventListener("click", questionOneListen);
+
+    function questionOneListen(event) {
+      if (event.target.id === "questionOneItemChoice2") {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("correctNotification").style.display = "block";
+        // Store Correct Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionOneContainer").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("correctNotification").style.display = "none";
+          document.getElementById("questionContainerTwo").style.display = "block";
+        }, 1000);
+      } else if (event.target.id === "questionOneItemChoice0" || event.target.id === "questionOneItemChoice1" || event.target.id === "questionOneItemChoice3") 
+      {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("incorrectNotification").style.display = "block";
+        // Store Incorrect Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionOneContainer").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("incorrectNotification").style.display = "none";
+          document.getElementById("questionContainerTwo").style.display = "block";
+          time = time - 5;
+        }, 1000);
+      }
+    }
+    //////////////////////////////////////////////////////////////////////QUESTION ONE END/////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////QUESTION TWO START/////////////////////////////////////////////
+    document.getElementById("questionTwoItemChoice1").addEventListener("click", questionTwoListen);
+    document.getElementById("questionTwoItemChoice0").addEventListener("click", questionTwoListen);
+    document.getElementById("questionTwoItemChoice2").addEventListener("click", questionTwoListen);
+    document.getElementById("questionTwoItemChoice3").addEventListener("click", questionTwoListen);
+
+    function questionTwoListen(event) {
+      if (event.target.id === "questionTwoItemChoice1") {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("correctNotification").style.display = "block";
+        // Store Correct Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionContainerTwo").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("correctNotification").style.display = "none";
+          document.getElementById("questionContainerThree").style.display = "block";
+        }, 1000);
+      } else if (event.target.id === "questionTwoItemChoice0" || event.target.id === "questionTwoItemChoice2" || event.target.id === "questionTwoItemChoice3") 
+      {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("incorrectNotification").style.display = "block";
+        // Store Incorrect Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionContainerTwo").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("incorrectNotification").style.display = "none";
+          document.getElementById("questionContainerThree").style.display = "block";
+          time = time - 5;
+        }, 1000);
+      }
+    }
+    //////////////////////////////////////////////////////////////////////QUESTION TWO END/////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////QUESTION THREE START/////////////////////////////////////////////
+    document.getElementById("questionThreeItemChoice3").addEventListener("click", questionThreeListen);
+    document.getElementById("questionThreeItemChoice0").addEventListener("click", questionThreeListen);
+    document.getElementById("questionThreeItemChoice1").addEventListener("click", questionThreeListen);
+    document.getElementById("questionThreeItemChoice2").addEventListener("click", questionThreeListen);
+
+    function questionThreeListen(event) {
+      if (event.target.id === "questionThreeItemChoice3") {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("correctNotification").style.display = "block";
+        // Store Correct Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionContainerThree").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("correctNotification").style.display = "none";
+          document.getElementById("questionContainerFour").style.display = "block";
+        }, 1000);
+      } else if (
+        event.target.id === "questionThreeItemChoice0" || event.target.id === "questionThreeItemChoice1" || event.target.id === "questionThreeItemChoice2") 
+        {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("incorrectNotification").style.display = "block";
+        // Store Incorrect Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionContainerThree").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("incorrectNotification").style.display = "none";
+          document.getElementById("questionContainerFour").style.display = "block";
+          time = time - 5;
+        }, 1000);
+      }
+    }
+    //////////////////////////////////////////////////////////////////////QUESTION THREE END/////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////QUESTION FOUR START/////////////////////////////////////////////
+    document.getElementById("questionFourItemChoice2").addEventListener("click", questionFourListen);
+    document.getElementById("questionFourItemChoice0").addEventListener("click", questionFourListen);
+    document.getElementById("questionFourItemChoice1").addEventListener("click", questionFourListen);
+    document.getElementById("questionFourItemChoice3").addEventListener("click", questionFourListen);
+
+    function questionFourListen(event) {
+      if (event.target.id === "questionFourItemChoice2") {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("correctNotification").style.display = "block";
+        // Store Correct Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionContainerFour").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("correctNotification").style.display = "none";
+          document.getElementById("questionContainerFive").style.display = "block";
+        }, 1000);
+      } else if (event.target.id === "questionFourItemChoice0" || event.target.id === "questionFourItemChoice1" || event.target.id === "questionFourItemChoice3") 
+      {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("incorrectNotification").style.display = "block";
+        // Store Incorrect Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionContainerFour").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("incorrectNotification").style.display = "none";
+          document.getElementById("questionContainerFive").style.display = "block";
+          time = time - 5;
+        }, 1000);
+      }
+    }
+    //////////////////////////////////////////////////////////////////////QUESTION FOUR END/////////////////////////////////////////////
+
+    //////////////////////////////////////////////////////////////////////QUESTION FIVE START/////////////////////////////////////////////
+    document.getElementById("questionFiveItemChoice3").addEventListener("click", questionFiveListen);
+    document.getElementById("questionFiveItemChoice0").addEventListener("click", questionFiveListen);
+    document.getElementById("questionFiveItemChoice1").addEventListener("click", questionFiveListen);
+    document.getElementById("questionFiveItemChoice2").addEventListener("click", questionFiveListen);
+
+    function questionFiveListen(event) {
+      if (event.target.id === "questionFiveItemChoice3") {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("correctNotification").style.display = "block";
+        // Store Correct Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionContainerFive").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("correctNotification").style.display = "none";
+          document.getElementById("countDown").style.display = "none";
+          clearInterval(timeLeft);
+          timeScore = time;
+          document.getElementById("endQuizContainer").style.display = "block";
+        }, 1000);
+      } else if (event.target.id === "questionFiveItemChoice0" || event.target.id === "questionFiveItemChoice1" || event.target.id === "questionFiveItemChoice2") 
+      {
+        document.getElementById("questionLineBreak").style.display = "block";
+        document.getElementById("incorrectNotification").style.display = "block";
+        // Store Incorrect Answer in Storage
+        setTimeout(function () {
+          document.getElementById("questionContainerFive").style.display = "none";
+          document.getElementById("questionLineBreak").style.display = "none";
+          document.getElementById("incorrectNotification").style.display = "none";
+          document.getElementById("countDown").style.display = "none";
+          clearInterval(timeLeft);
+          timeScore = time;
+          document.getElementById("endQuizContainer").style.display = "block";
+          time = time - 5;
+        }, 1000);
+      }
+      clearInterval(timeLeft);
+    }
+    //////////////////////////////////////////////////////////////////////QUESTION FIVE END/////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////END QUIZ START/////////////////////////////////////////////
+    document.getElementById("submitScorebtn").addEventListener("click", submission);
+    // Event Listener for Submitting Initials and Score
+    function submission() {
+    let currentUserData = [];
+    var highScoresArray = [];
 
-// Makes the container for End Quiz
-// CSS name = container
-var endQuizContainerDiv = document.createElement("div");
-endQuizContainerDiv.className = "container";
-endQuizContainerDiv.id = "endQuizContainer";
-quizContent.appendChild(endQuizContainerDiv);
-
-// Makes the p for End Quiz Statement
-// CSS name = endQuizStatement
-var endQuizStatement = document.createElement("p");
-endQuizStatement.id = "endQuizStatement";
-endQuizStatement.textContent = "All done!";
-endQuizContainerDiv.appendChild(endQuizStatement);
-
-// Makes the p for Final Score
-// CSS name = endQuizStatement
-var finalScore = document.createElement("p");
-finalScore.id = "finalScore";
-finalScore.textContent = "Your final time score is: " + timeScore;
-endQuizContainerDiv.appendChild(finalScore);
-
-// Makes the container for Submit Initials
-// CSS name = endQuizStatement
-var submitInitialsContainer = document.createElement("div");
-submitInitialsContainer.id = "submitInitialsContainer";
-endQuizContainerDiv.appendChild(submitInitialsContainer);
-
-// Makes the p for Submit Initials
-// CSS name = pSubmitInitials
-var pSubmitInitials = document.createElement("p");
-pSubmitInitials.id = "pSubmitInitials";
-pSubmitInitials.textContent = "Enter Initials";
-submitInitialsContainer.appendChild(pSubmitInitials);
-
-// Make input for Submit Initials
-// CSS name = inputSubmitInitials
-var inputSubmitInitials = document.createElement("input");
-inputSubmitInitials.id = "inputSubmitInitials";
-inputSubmitInitials.type = "text";
-submitInitialsContainer.appendChild(inputSubmitInitials);
-
-// Make button for Submit Initials
-// CSS name = submitScorebtn
-var submitScorebtn = document.createElement("input");
-submitScorebtn.id = "submitScorebtn";
-submitScorebtn.setAttribute("type", "submit");
-submitInitialsContainer.appendChild(submitScorebtn);
-
-// Event Listener for Submitting Initials and Score
-submitScorebtn.addEventListener("click", function () {
-  alert("You got me");
-  var initialsValue = document.getElementById("inputSubmitInitials").value;
-  console.log(initialsValue);
-  var initialsScoreCombo = initialsValue + " - " + timeScore;
-  console.log(initialsScoreCombo);
-  currentUserData.push(initialsScoreCombo);
-  console.log(currentUserData);
-  // containerDiv.remove()
-  document.getElementById("endQuizContainer").style.display = "none";
-  //   displayHighScores();
-});
-
-document.getElementById("endQuizContainer").style.display = "none";
-
-//////////////////////////////////////////////////////////////////////END QUIZ END/////////////////////////////////////////////
-
-let time = 75;
-var timeScore;
-
-
-function startQuizFunction() {
-  alert("button clicked");
-
-  document.getElementById("openingContent").style.display = "none";
-  document.getElementById("questionOneContainer").style.display = "block";
-
-  var timeLeft = setInterval(counting, 1000);
-
-  function counting() {
-    if (time <= 0) {
-      clearInterval(timeLeft);
-      document.getElementById("quizContent").style.display = "none";
-      alert("quiz done!");
-    } else {
-      document.getElementById("countDown").innerHTML =
-        time + "seconds remaining";
+    // Makes the p for displaying Current User initials and Score
+    // CSS name = userInitilScore
+    var userInitilScore = document.createElement('p');
+    userInitilScore.className = 'userInitilScore';
+    userInitilScore.id = 'userInitilScore';
+    userInitilScore.appendChild(document.createTextNode(currentUserData));
+    finalScoresContainerDiv.appendChild(userInitilScore);
+    var initialsValue = document.getElementById("inputSubmitInitials").value;
+    var initialsScoreCombo = initialsValue + " - " + timeScore;
+    
+    if (currentUserData.length == 0 ){
+        currentUserData.push(initialsScoreCombo);
+        console.log(currentUserData);
+        highScoresArray.push(currentUserData[0]);
+        console.log(highScoresArray);
+    } else if ( currentUserData.length == 1 ){
+        currentUserData.length = 0;
+        currentUserData.push(initialsScoreCombo);
+        console.log(currentUserData);
+        highScoresArray.push(currentUserData[0]);
+        console.log(highScoresArray);
     }
-    time -= 1;
-  }
 
-  counting();
+      
+
+   
+
+
+
+
+  
+
+      document.getElementById("endQuizContainer").style.display = "none";
+      document.getElementById("finalScoresContainerDiv").style.display = "block";
+    };
+//////////////////////////////////////////////////////////////////////END QUIZ END////////////////////////////////////////////
+    document.getElementById("clearHighScoresBtn").addEventListener("click", clearingScores);
+    // Event Listener for Clearing All Scores
+    function clearingScores() {
+      highScoresArray.legnth = 0;
+      currentUserData.length = 0;
+    };
+
+    document.getElementById("goBackBtn").addEventListener("click", goingBack);
+    function goingBack() {
+        document.getElementById("finalScoresContainerDiv").style.display = "none";
+        document.getElementById("finalScoresBtnContainer").style.display = "none";
+        document.getElementById("openingContent").style.display = "block";
+      };
+
 }
+//////////////////////////////////////////START QUIZ FUNCTION END///////////////////////////////////////////////
