@@ -18,7 +18,9 @@ var choicesThree = ["numbers and strings","other arrays","booleans","all of the 
 var choicesFour = ["commas", "curly brackets", "quotes", "parenthesis"];
 var choicesFive = ["javascript", "terminal/bash", "for loops", "console.log"];
 
-var timeScore;
+let time;
+let timeScore;
+timeScore = time;
 let currentUserData = [];
 var highScoresArray = [];
 
@@ -251,8 +253,14 @@ document.getElementById("questionContainerFive").style.display = "none";
     // CSS name = endQuizStatement
     var finalScore = document.createElement("p");
     finalScore.id = "finalScore";
-    finalScore.textContent = "Your final time score is: " + timeScore;
-    endQuizContainerDiv.appendChild(finalScore);
+    finalScore.textContent = "Your final time score is: "
+    endQuizStatement.appendChild(finalScore);
+    // Makes the div to hold timeScore
+    // CSS name = displayedScoreDiv
+    var displayedScore = document.createElement('div');
+    displayedScore.className = "scoring";
+    displayedScore.id = "displayedScoreDiv";
+    finalScore.appendChild(displayedScore);
 
     // Makes the container for Submit Initials
     // CSS name = endQuizStatement
@@ -298,15 +306,6 @@ document.getElementById("questionContainerFive").style.display = "none";
   highScoresStatement.textContent = 'High Scores';
   finalScoresContainerDiv.appendChild(highScoresStatement);
 
-  // Makes the p for displaying Current User initials and Score
-  // CSS name = userInitilScore
-  // var userInitilScore = document.createElement('p');
-  // userInitilScore.className = 'userInitilScore';
-  // userInitilScore.id = 'userInitilScore';
-  // userInitilScore.appendChild(document.createTextNode(currentUserData));
-  // finalScoresContainerDiv.appendChild(userInitilScore);
-
-
   // Makes the container for Final Score Buttons
   // CSS name = container
   var finalScoresBtnContainer = document.createElement('div');
@@ -340,10 +339,8 @@ document.getElementById("startButton").addEventListener("click", startQuizFuncti
 
 //////////////////////////////////////////START QUIZ FUNCTION START///////////////////////////////////////////////
 function startQuizFunction() {
-    let time = 75;
+    time = 75;
 
-    // let currentUserData = [];
-    // var highScoresArray = [];
 
     document.getElementById("openingContent").style.display = "none";
     document.getElementById("questionOneContainer").style.display = "block";
@@ -399,7 +396,6 @@ function startQuizFunction() {
           document.getElementById("questionLineBreak").style.display = "none";
           document.getElementById("incorrectNotification").style.display = "none";
           document.getElementById("questionContainerTwo").style.display = "block";
-          time = time - 5;
         }, 1000);
       }
     }
@@ -432,7 +428,6 @@ function startQuizFunction() {
           document.getElementById("questionLineBreak").style.display = "none";
           document.getElementById("incorrectNotification").style.display = "none";
           document.getElementById("questionContainerThree").style.display = "block";
-          time = time - 5;
         }, 1000);
       }
     }
@@ -466,7 +461,6 @@ function startQuizFunction() {
           document.getElementById("questionLineBreak").style.display = "none";
           document.getElementById("incorrectNotification").style.display = "none";
           document.getElementById("questionContainerFour").style.display = "block";
-          time = time - 5;
         }, 1000);
       }
     }
@@ -499,7 +493,6 @@ function startQuizFunction() {
           document.getElementById("questionLineBreak").style.display = "none";
           document.getElementById("incorrectNotification").style.display = "none";
           document.getElementById("questionContainerFive").style.display = "block";
-          time = time - 5;
         }, 1000);
       }
     }
@@ -522,7 +515,6 @@ function startQuizFunction() {
           document.getElementById("correctNotification").style.display = "none";
           document.getElementById("countDown").style.display = "none";
           clearInterval(timeLeft);
-          timeScore = time;
           document.getElementById("endQuizContainer").style.display = "block";
         }, 1000);
       } else if (event.target.id === "questionFiveItemChoice0" || event.target.id === "questionFiveItemChoice1" || event.target.id === "questionFiveItemChoice2") 
@@ -536,66 +528,83 @@ function startQuizFunction() {
           document.getElementById("incorrectNotification").style.display = "none";
           document.getElementById("countDown").style.display = "none";
           clearInterval(timeLeft);
-          timeScore = time;
           document.getElementById("endQuizContainer").style.display = "block";
-          time = time - 5;
         }, 1000);
       }
       clearInterval(timeLeft);
     }
+
+
     //////////////////////////////////////////////////////////////////////QUESTION FIVE END/////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////END QUIZ START/////////////////////////////////////////////
-    document.getElementById("submitScorebtn").addEventListener("click", submission);
-    // Event Listener for Submitting Initials and Score
-    function submission() {
-
-    // Makes the p for displaying Current User initials and Score
-    // CSS name = userInitilScore
-    var userInitilScore = document.createElement('p');
-    userInitilScore.className = 'userInitilScore';
-    userInitilScore.id = 'userInitilScore';
-    userInitilScore.appendChild(document.createTextNode(currentUserData));
-    finalScoresContainerDiv.appendChild(userInitilScore);
-    var initialsValue = document.getElementById("inputSubmitInitials").value;
-    var initialsScoreCombo = initialsValue + " - " + timeScore;
-    
-  
-    currentUserData.push(initialsScoreCombo);
-    console.log(currentUserData);
-  
-    highScoresArray.push(currentUserData);
-    console.log(highScoresArray);
-
-
-
-      
-
-   
-
-
-
-
-  
-
-      document.getElementById("endQuizContainer").style.display = "none";
-      document.getElementById("finalScoresContainerDiv").style.display = "block";
-    };
-//////////////////////////////////////////////////////////////////////END QUIZ END////////////////////////////////////////////
-    document.getElementById("clearHighScoresBtn").addEventListener("click", clearingScores);
-    // Event Listener for Clearing All Scores
-    function clearingScores() {
-      highScoresArray.legnth = 0;
-      currentUserData.length = 0;
-    };
-
-    document.getElementById("goBackBtn").addEventListener("click", goingBack);
-    function goingBack() {
-        document.getElementById("finalScoresContainerDiv").style.display = "none";
-        document.getElementById("finalScoresBtnContainer").style.display = "none";
-        document.getElementById("openingContent").style.display = "block";
-        currentUserData.length = 0;
-      };
-
 }
-//////////////////////////////////////////START QUIZ FUNCTION END///////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////END QUIZ END////////////////////////////////////////////
+document.getElementById("questionOneItemChoice0").addEventListener("click", subtractTime);
+document.getElementById("questionOneItemChoice1").addEventListener("click", subtractTime);
+document.getElementById("questionOneItemChoice3").addEventListener("click", subtractTime);
+document.getElementById("questionTwoItemChoice0").addEventListener("click", subtractTime);
+document.getElementById("questionTwoItemChoice2").addEventListener("click", subtractTime);
+document.getElementById("questionTwoItemChoice3").addEventListener("click", subtractTime);
+document.getElementById("questionThreeItemChoice0").addEventListener("click", subtractTime);
+document.getElementById("questionThreeItemChoice1").addEventListener("click", subtractTime);
+document.getElementById("questionThreeItemChoice2").addEventListener("click", subtractTime);
+document.getElementById("questionFourItemChoice0").addEventListener("click", subtractTime);
+document.getElementById("questionFourItemChoice1").addEventListener("click", subtractTime);
+document.getElementById("questionFourItemChoice3").addEventListener("click", subtractTime);
+document.getElementById("questionFiveItemChoice0").addEventListener("click", subtractTime);
+document.getElementById("questionFiveItemChoice1").addEventListener("click", subtractTime);
+document.getElementById("questionFiveItemChoice2").addEventListener("click", subtractTime);
+
+function subtractTime(){
+  time = time - 5;
+}
+
+document.getElementById("questionFiveItemChoice3").addEventListener("click", setScore);
+document.getElementById("questionFiveItemChoice0").addEventListener("click", setScore);
+document.getElementById("questionFiveItemChoice1").addEventListener("click", setScore);
+document.getElementById("questionFiveItemChoice2").addEventListener("click", setScore);
+
+function setScore() {
+  timeScore = time;
+  displayedScoreDiv.innerHTML = `${time}`;
+}
+
+//////////////////////////////////////////////////////////////////SUBMIT SCORE START///////////////////////////////////////////////
+document.getElementById("submitScorebtn").addEventListener("click", submission);
+// Event Listener for Submitting Initials and Score
+function submission() {
+
+  // Makes the p for displaying Current User initials and Score
+  // CSS name = userInitilScore
+  var userInitilScore = document.createElement('p');
+  userInitilScore.className = 'userInitilScore';
+  userInitilScore.id = 'userInitilScore';
+  userInitilScore.appendChild(document.createTextNode(currentUserData));
+  finalScoresContainerDiv.appendChild(userInitilScore);
+  var initialsValue = document.getElementById("inputSubmitInitials").value;
+  var initialsScoreCombo = initialsValue + " - " + timeScore;
+  currentUserData.push(initialsScoreCombo);
+  console.log(currentUserData);
+
+  highScoresArray.push(currentUserData[0]);
+  console.log(highScoresArray);
+
+  document.getElementById("endQuizContainer").style.display = "none";
+  document.getElementById("finalScoresContainerDiv").style.display = "block";
+};
+//////////////////////////////////////////////////////////////////SUBMIT SCORE END///////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////END QUIZ END////////////////////////////////////////////
+document.getElementById("clearHighScoresBtn").addEventListener("click", clearingScores);
+// Event Listener for Clearing All Scores
+function clearingScores() {
+  highScoresArray.legnth = 0;
+  currentUserData.length = 0;
+};
+
+document.getElementById("goBackBtn").addEventListener("click", goingBack);
+function goingBack() {
+    document.getElementById("finalScoresContainerDiv").style.display = "none";
+    document.getElementById("finalScoresBtnContainer").style.display = "none";
+    document.getElementById("openingContent").style.display = "block";
+    currentUserData.length = 0;
+  };
