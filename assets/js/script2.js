@@ -349,8 +349,13 @@ function startQuizFunction() {
 
 
     document.getElementById("openingContent").style.display = "none";
+
+    document.getElementById("questionContainerTwo").style.display = "none";
+    document.getElementById("questionContainerThree").style.display = "none";
+    document.getElementById("questionContainerFour").style.display = "none";
+    document.getElementById("questionContainerFive").style.display = "none";
+
     document.getElementById("questionOneContainer").style.display = "block";
- 
 
     document.getElementById("countDown").style.display = "block";
 
@@ -369,6 +374,7 @@ function startQuizFunction() {
         console.log(timeScore);
         document.getElementById("questionsContainer").style.display = "none";
         document.getElementById("endQuizContainer").style.display = "block";
+        setScore();
       } else {
         document.getElementById("questionsContainer").style.display = "block";
       }
@@ -634,54 +640,8 @@ function goingBack() {
     currentUserData.length = 0;
     highScoreList.innerHTML = '';
   };
-
-
 /////////////////////////////////////////////////////////////////////////////VIEW HIGH SCORES PAGE/////////////////////
-var viewHighScoresPage = document.querySelector("#scoringContainer");
 
-
-
- // Makes the container for Final Score
-  // CSS name = container
-  var finalScoresContainerDiv = document.createElement('div');
-  finalScoresContainerDiv.className = 'container';
-  finalScoresContainerDiv.id = 'finalScoresContainerDiv';
-  viewHighScoresPage.appendChild(finalScoresContainerDiv);
-
-  // Makes the p for Final Score Statement
-  // CSS name = highScoresStatement
-  var highScoresStatement = document.createElement('p');
-  highScoresStatement.id = 'endQuizStatement';
-  highScoresStatement.textContent = 'High Scores';
-  finalScoresContainerDiv.appendChild(highScoresStatement);
-
-  // Makes the ul for High Score List
-  // CSS name = highScoreList
-  var highScoreList = document.createElement('ul');
-  highScoreList.id = 'highScoreList';
-  highScoresStatement.appendChild(highScoreList);
-
-  // Makes the container for Final Score Buttons
-  // CSS name = container
-  var finalScoresBtnContainer = document.createElement('div');
-  finalScoresBtnContainer.className = 'container';
-  finalScoresBtnContainer.id = 'finalScoresBtnContainer';
-  quizContent.appendChild(finalScoresBtnContainer);
-
-  // Makes Two Buttons
-  // CSS Class names = finalButton
-  // CSS ID names = goBackBtn / clearHighScoresBtn
-  var goBackBtn = document.createElement('button');
-  goBackBtn.className = 'finalButton';
-  goBackBtn.id = 'goBackBtn';
-  goBackBtn.textContent = 'Go Back';
-  finalScoresContainerDiv.appendChild(goBackBtn);
-
-  var clearHighScoresBtn = document.createElement('button');
-  clearHighScoresBtn.className = 'finalButton';
-  clearHighScoresBtn.id = 'clearHighScoresBtn';
-  clearHighScoresBtn.textContent = 'Clear High Scores';
-  finalScoresContainerDiv.appendChild(clearHighScoresBtn);
 
 
 

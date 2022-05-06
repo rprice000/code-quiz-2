@@ -62,10 +62,10 @@ All screen shots are located in: /assets/images/...
 
 ## Links
 GitHub Repo
-// ADD REPO LINK
+https://github.com/rprice000/code-quiz-2
 
 Deployed GitHub Page
-// ADD DEPLOYED APP LINK
+https://rprice000.github.io/code-quiz-2/
 
 ## Version
 - 2.0.0
