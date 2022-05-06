@@ -50,6 +50,9 @@ body,
   list-style-type: none;
 }
 
+.scoreItems {
+  list-style-type: none;
+}
 
 #highScoresContainer {
   text-align: center;
