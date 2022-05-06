@@ -70,6 +70,7 @@ document.getElementById("clearScoresBtn").addEventListener("click", clearingScor
 // Event Listener for Clearing All Scores
 function clearingScoresTwo() {
   localStorage.clear();
+  highScoreListTwo.innerHTML = '';
   highScoresArray.length = 0;
   currentUserData.length = 0;
 };
