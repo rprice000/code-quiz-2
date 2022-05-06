@@ -40,18 +40,17 @@ body,
     text-align: center;
 }
 
-/* .answerList {
-    display: flex;
-    justify-content: space-around;
-} */
 
 .itemButton {
-    /* display: block; */
     margin: 30px;
 }
 
 
-
-.highScoresList {
+.highScoreItems {
   list-style-type: none;
+}
+
+
+#highScoresContainer {
+  text-align: center;
 }
