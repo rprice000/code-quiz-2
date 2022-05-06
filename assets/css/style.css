@@ -57,3 +57,14 @@ body,
 #highScoresContainer {
   text-align: center;
 }
+
+
+.finalButton {
+  margin: 30px;
+}
+
+
+
+.highScoreButtons {
+  margin: 30px;
+}
