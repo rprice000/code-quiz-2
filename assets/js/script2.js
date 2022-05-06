@@ -306,6 +306,12 @@ document.getElementById("questionContainerFive").style.display = "none";
   highScoresStatement.textContent = 'High Scores';
   finalScoresContainerDiv.appendChild(highScoresStatement);
 
+  // Makes the ul for High Score List
+  // CSS name = highScoreList
+  var highScoreList = document.createElement('ul');
+  highScoreList.id = 'highScoreList';
+  highScoresStatement.appendChild(highScoreList);
+
   // Makes the container for Final Score Buttons
   // CSS name = container
   var finalScoresBtnContainer = document.createElement('div');
@@ -584,23 +590,44 @@ function submission() {
   var initialsValue = document.getElementById("inputSubmitInitials").value;
   var initialsScoreCombo = initialsValue + " - " + timeScore;
   currentUserData.push(initialsScoreCombo);
-  console.log(currentUserData);
-
 
   highScoresArray.push(currentUserData[0]);
   localStorage.setItem("storedHighScores", JSON.stringify(highScoresArray))
-  console.log(highScoresArray);
-  // console.log(storedHighScores);
 
   document.getElementById("endQuizContainer").style.display = "none";
   document.getElementById("finalScoresContainerDiv").style.display = "block";
+
 };
+
+
+
+
+
+document.getElementById("submitScorebtn").addEventListener("click", createHighScoreList);
+
+function createHighScoreList() {
+
+  var pullScoreList = JSON.parse(localStorage.getItem("storedHighScores"))
+  console.log(pullScoreList);
+
+  for (var i = 0; i < pullScoreList.length; i++) {
+    var highScoreItem = document.createElement("li");
+    highScoreItem.className = "highScoreItems";
+    highScoreItem.id = "highScoreItem" + i;
+    highScoreItem.appendChild(document.createTextNode(pullScoreList[i]));
+    highScoreList.appendChild(highScoreItem);
+  }
+
+}
+
+
+
+
 //////////////////////////////////////////////////////////////////SUBMIT SCORE END///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////END QUIZ END////////////////////////////////////////////
 document.getElementById("clearHighScoresBtn").addEventListener("click", clearingScores);
 // Event Listener for Clearing All Scores
 function clearingScores() {
-  // highScoresArray.legnth = 0;
   localStorage.clear();
   highScoresArray.length = 0;
   currentUserData.length = 0;
@@ -612,4 +639,5 @@ function goingBack() {
     document.getElementById("finalScoresBtnContainer").style.display = "none";
     document.getElementById("openingContent").style.display = "block";
     currentUserData.length = 0;
+    highScoreList.innerHTML = '';
   };
