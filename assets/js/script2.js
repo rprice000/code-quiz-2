@@ -586,8 +586,11 @@ function submission() {
   currentUserData.push(initialsScoreCombo);
   console.log(currentUserData);
 
+
   highScoresArray.push(currentUserData[0]);
+  localStorage.setItem("storedHighScores", JSON.stringify(highScoresArray))
   console.log(highScoresArray);
+  // console.log(storedHighScores);
 
   document.getElementById("endQuizContainer").style.display = "none";
   document.getElementById("finalScoresContainerDiv").style.display = "block";
@@ -597,7 +600,9 @@ function submission() {
 document.getElementById("clearHighScoresBtn").addEventListener("click", clearingScores);
 // Event Listener for Clearing All Scores
 function clearingScores() {
-  highScoresArray.legnth = 0;
+  // highScoresArray.legnth = 0;
+  localStorage.clear();
+  highScoresArray.length = 0;
   currentUserData.length = 0;
 };
 
